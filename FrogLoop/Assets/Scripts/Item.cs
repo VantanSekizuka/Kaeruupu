@@ -6,10 +6,15 @@ using UnityEngine;
 public class Item : MonoBehaviour {
 
     [SerializeField] PlayerStatus.Status changeStatus;
-
+    
     //プレイヤーだったらPlayerStatusのChangeをよぼう
     void OnTriggerEnter2D(Collider2D other)
     {
-
+        if (other.gameObject.tag == "Player")
+        {
+            other.GetComponent<PlayerStatus>().Changed(changeStatus);
+            Debug.Log("菊池怖い");
+            Destroy(transform.gameObject);
+        }
     }
 }
