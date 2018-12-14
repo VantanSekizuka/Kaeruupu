@@ -16,11 +16,18 @@ public class PlayerAlpha : IPlayerMove {
 
     void FixedUpdate()
     {
-
+        Move();
     }
 
     protected override void Move()
     {
-
+        if (InWaterFlag)
+        {
+            GetComponent<Rigidbody2D>().gravityScale = 0.1f;
+        }
+        else
+        {
+            GetComponent<Rigidbody2D>().gravityScale = 1.0f;
+        }
     }
 }
