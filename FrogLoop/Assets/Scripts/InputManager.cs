@@ -12,15 +12,35 @@ public class InputManager : MonoBehaviour {
 	}
 
     public Vector2 tapPosition { get; private set; }
-
-    void FixedUpdate ()
+    public enum TouchState
     {
-        if (Input.GetMouseButtonDown(0))
+        FREE,
+        PRESSING,
+        PUSHED,
+        RELEASE
+    }
+    public TouchState state;
+
+    void FixedUpdate()
+    {
+        state = TouchState.FREE;
+        if (Input.GetMouseButton(0))
         {
             Vector3 screen_point = Input.mousePosition;
             screen_point.z = 10.0f;
             tapPosition = Camera.main.ScreenToWorldPoint(screen_point);
+            state = TouchState.PRESSING;
+
             Debug.Log(tapPosition);
         }
+        if (Input.GetMouseButtonDown(0))
+        {
+            state = TouchState.PUSHED;
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            state = TouchState.RELEASE;
+        }
+        Debug.Log(state);
     }
 }
