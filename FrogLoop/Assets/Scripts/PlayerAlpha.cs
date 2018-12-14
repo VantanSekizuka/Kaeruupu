@@ -23,7 +23,8 @@ public class PlayerAlpha : IPlayerMove {
     {
         if (InWaterFlag)
         {
-            GetComponent<Rigidbody2D>().gravityScale = 0.1f;
+            GetComponent<Rigidbody2D>().gravityScale = 1.0f;
+            GetComponent<Rigidbody2D>().velocity *= 0.8f;
         }
         else
         {
