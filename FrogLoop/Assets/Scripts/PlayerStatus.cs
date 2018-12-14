@@ -24,9 +24,6 @@ public class PlayerStatus : MonoBehaviour {
 
     public void Changed(Status _status)
     {
-        bool flag = GetPlayerFromStatus(status).InWaterFlag;
-        alpha.InWaterFlag = beta.InWaterFlag = gamma.InWaterFlag = flag;
-
         GetPlayerFromStatus(status).enabled = false;
         status = _status;
         GetPlayerFromStatus(status).enabled = true;

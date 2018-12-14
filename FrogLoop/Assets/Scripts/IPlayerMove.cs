@@ -10,7 +10,7 @@ public abstract class IPlayerMove : MonoBehaviour {
         InWaterFlag = false; //ステージ構成による
     }
 
-    public bool InWaterFlag { get; set; } //水に入っているか
+    public static bool InWaterFlag { get; set; } //水に入っているか
 
     protected abstract void Move(); //動き フィックスアップデートでよぼう
 }
