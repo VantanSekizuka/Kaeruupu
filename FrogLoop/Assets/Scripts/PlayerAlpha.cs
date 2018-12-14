@@ -23,12 +23,18 @@ public class PlayerAlpha : IPlayerMove {
     {
         if (InWaterFlag)
         {
-            GetComponent<Rigidbody2D>().gravityScale = 1.0f;
-            GetComponent<Rigidbody2D>().velocity *= 0.8f;
+            //水中
+            GetComponent<Rigidbody2D>().gravityScale = 0.0f;
+            if (InputManager.inputManager.state == InputManager.TouchState.PRESSING)
+            {
+                GetComponent<Rigidbody2D>().AddForce(10*(InputManager.inputManager.tapPosition - new Vector2(transform.position.x, transform.position.y)));
+            }
         }
         else
         {
+            //地面
             GetComponent<Rigidbody2D>().gravityScale = 1.0f;
         }
+        Debug.Log(InputManager.inputManager.PlayerDrag);
     }
 }

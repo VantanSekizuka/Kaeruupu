@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour {
 
     void Start () {
         inputManager = this;
+        PlayerDrag = false;
 	}
 
     public Vector2 tapPosition { get; private set; }
@@ -20,7 +21,7 @@ public class InputManager : MonoBehaviour {
         RELEASE
     }
     public TouchState state;
-
+    public bool PlayerDrag { get; set; }
     void FixedUpdate()
     {
         state = TouchState.FREE;
@@ -30,8 +31,6 @@ public class InputManager : MonoBehaviour {
             screen_point.z = 10.0f;
             tapPosition = Camera.main.ScreenToWorldPoint(screen_point);
             state = TouchState.PRESSING;
-
-            Debug.Log(tapPosition);
         }
         if (Input.GetMouseButtonDown(0))
         {
