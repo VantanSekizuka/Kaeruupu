@@ -17,7 +17,7 @@ public class PlayerGamma : IPlayerMove
 
     void OnEnable()
     {
-       //Debug.Log("Enable");
+        //Debug.Log("Enable");
     }
 
     void FixedUpdate()//ここメイン
@@ -28,6 +28,7 @@ public class PlayerGamma : IPlayerMove
             _playerPos = this.transform.position;
             _mousePosition = InputManager.inputManager.tapPosition;
             Move();
+            Debug.Log(InputManager.inputManager.PlayerDrag);
         }
 
 
@@ -45,6 +46,5 @@ public class PlayerGamma : IPlayerMove
         //    _playerPos -= new Vector2(_speed, 0);
         //}
         //this.transform.position = _playerPos;
-        Debug.Log(InputManager.inputManager.PlayerDrag);
     }
 }
