@@ -40,6 +40,6 @@ public class InputManager : MonoBehaviour {
         {
             state = TouchState.RELEASE;
         }
-        Debug.Log(state);
+        //Debug.Log(state);
     }
 }
