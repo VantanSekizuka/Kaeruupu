@@ -8,10 +8,12 @@ public class PlayerGamma : IPlayerMove
     [SerializeField]
     private float _speed;//カエルのスピード
 
-    private Vector3 _playerPos;
-    private Vector3 _mousePosition;
+    private Vector2 _playerPos;
+    private Vector2 _mousePosition;
+    private InputManager _ipm;
     void Start()
     {
+        _ipm = InputManager.inputManager;
         //Debug.Log("Start");
     }
 
@@ -23,11 +25,15 @@ public class PlayerGamma : IPlayerMove
 
     void FixedUpdate()//ここメイン
     {
-        if (Input.GetMouseButton(0))
+        if (_ipm.state == InputManager.TouchState.PRESSING)
         {
-            _mousePosition = Input.mousePosition - new Vector3(Screen.width / 2, 0, 0);
-            _playerPos = this.transform.position;           
+            _mousePosition = _ipm.tapPosition;
+            _playerPos = this.transform.position;
             Move();
+        }
+        if (_ipm.PlayerDrag == true)
+        {
+            Debug.Log(_ipm.PlayerDrag);
         }
     }
 
@@ -37,11 +43,11 @@ public class PlayerGamma : IPlayerMove
         if (0 < _mousePosition.x)//プレイヤーより右側タップ
         {
 
-            _playerPos += new Vector3(_speed, 0, 0);
+            _playerPos += new Vector2(_speed, 0);
         }
         else if (0 > _mousePosition.x)//プレイヤーより左側をタップ
         {
-            _playerPos -= new Vector3(_speed, 0, 0);
+            _playerPos -= new Vector2(_speed, 0);
         }
         this.transform.position = _playerPos;
     }
