@@ -5,20 +5,14 @@ using UnityEngine;
 //タガメ
 public class Tagame : IEnemy
 {
-
-    
     private float Tagame_y;
     [SerializeField]
     private float Tagame_haba;
     [SerializeField]
     private float  Speed;
-
-    private Transform Tagame_Pos;
-
-    
+ 
     void Start()
-    {
-        Tagame_Pos=GetComponent<Transform>();
+    { 
         Tagame_y = transform.localPosition.y;
     }
     protected override void FixedUpdate()
@@ -53,7 +47,11 @@ public class Tagame : IEnemy
 
     protected override void OnCollisionEnter2D(Collision2D other)
     {
-
+        if (other.gameObject.tag == "Player")
+        {
+            HitingBool = true;
+            Debug.Log(HitingBool);
+        }
     }
 }
 
