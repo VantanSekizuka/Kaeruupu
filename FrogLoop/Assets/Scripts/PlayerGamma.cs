@@ -10,45 +10,41 @@ public class PlayerGamma : IPlayerMove
 
     private Vector2 _playerPos;
     private Vector2 _mousePosition;
-    private InputManager _ipm;
     void Start()
     {
-        _ipm = InputManager.inputManager;
         //Debug.Log("Start");
     }
 
-    void OnEnable()//
+    void OnEnable()
     {
-
-        //Debug.Log("Enable");
+       //Debug.Log("Enable");
     }
 
     void FixedUpdate()//ここメイン
     {
-        if (_ipm.state == InputManager.TouchState.PRESSING)
+
+        if (InputManager.inputManager.state == InputManager.TouchState.PRESSING)
         {
-            _mousePosition = _ipm.tapPosition;
             _playerPos = this.transform.position;
+            _mousePosition = InputManager.inputManager.tapPosition;
             Move();
         }
-        if (_ipm.PlayerDrag == true)
-        {
-            Debug.Log(_ipm.PlayerDrag);
-        }
+
+        Debug.Log(InputManager.inputManager.PlayerDrag);
+
     }
 
     protected override void Move()
     {
 
-        if (0 < _mousePosition.x)//プレイヤーより右側タップ
-        {
-
-            _playerPos += new Vector2(_speed, 0);
-        }
-        else if (0 > _mousePosition.x)//プレイヤーより左側をタップ
-        {
-            _playerPos -= new Vector2(_speed, 0);
-        }
-        this.transform.position = _playerPos;
+        //if (_playerPos.x < _mousePosition.x)//プレイヤーより右側タップ
+        //{
+        //    _playerPos += new Vector2(_speed, 0);
+        //}
+        //else if (_playerPos.x > _mousePosition.x)//プレイヤーより左側をタップ
+        //{
+        //    _playerPos -= new Vector2(_speed, 0);
+        //}
+        //this.transform.position = _playerPos;
     }
 }
