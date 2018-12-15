@@ -30,7 +30,6 @@ public class PlayerGamma : IPlayerMove
             Move();
         }
 
-        Debug.Log(InputManager.inputManager.PlayerDrag);
 
     }
 
@@ -46,5 +45,6 @@ public class PlayerGamma : IPlayerMove
         //    _playerPos -= new Vector2(_speed, 0);
         //}
         //this.transform.position = _playerPos;
+        Debug.Log(InputManager.inputManager.PlayerDrag);
     }
 }
