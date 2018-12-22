@@ -4,9 +4,12 @@ using UnityEngine;
 
 //オタマジャクシ
 public class PlayerAlpha : IPlayerMove {
+
+    Rigidbody2D rigidbody;
     void Start()
     {
         Debug.Log("Start");
+        rigidbody = GetComponent<Rigidbody2D>();
     }
 
     void OnEnable()
@@ -24,16 +27,17 @@ public class PlayerAlpha : IPlayerMove {
         if (InWaterFlag)
         {
             //水中
-            GetComponent<Rigidbody2D>().gravityScale = 0.0f;
+            rigidbody.gravityScale = 0.0f;
             if (InputManager.inputManager.state == InputManager.TouchState.PRESSING)
             {
-                GetComponent<Rigidbody2D>().AddForce(10*(InputManager.inputManager.tapPosition - new Vector2(transform.position.x, transform.position.y)));
+                rigidbody.AddForce(10*(InputManager.inputManager.tapPosition - new Vector2(transform.position.x, transform.position.y)));
             }
+            rigidbody.velocity *= 0.9f;
         }
         else
         {
             //地面
-            GetComponent<Rigidbody2D>().gravityScale = 1.0f;
+            rigidbody.gravityScale = 1.0f;
         }
         Debug.Log(InputManager.inputManager.PlayerDrag);
     }
