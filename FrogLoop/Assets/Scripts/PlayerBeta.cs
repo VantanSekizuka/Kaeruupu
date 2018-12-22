@@ -6,6 +6,10 @@ using UnityEngine;
 public class PlayerBeta : IPlayerMove {
 
     Rigidbody2D rigidbody;
+    [SerializeField] float speadScale;
+    [SerializeField] float maxSpead;
+
+    public float speed = 0.2f;
 
     void Start()
     {
@@ -29,8 +33,8 @@ public class PlayerBeta : IPlayerMove {
 
     protected override void Move()
     {
-        
-      
+
+
 
         if (InWaterFlag)
         {
@@ -38,9 +42,16 @@ public class PlayerBeta : IPlayerMove {
             rigidbody.gravityScale = 0.0f;
             if (InputManager.inputManager.state == InputManager.TouchState.PRESSING)
             {
-                rigidbody.AddForce(10 * (InputManager.inputManager.tapPosition - new Vector2(transform.position.x, transform.position.y)));
+                rigidbody.AddForce((InputManager.inputManager.tapPosition - new Vector2(transform.position.x, transform.position.y)).normalized * speadScale);
+                if (rigidbody.velocity.sqrMagnitude > maxSpead * maxSpead)
+                {
+                    rigidbody.velocity = rigidbody.velocity.normalized * maxSpead;
+                }
             }
-            rigidbody.velocity *= 0.9f;
+            else
+            {
+                rigidbody.velocity *= 0.94f;
+            }
         }
         else
         {
@@ -52,12 +63,13 @@ public class PlayerBeta : IPlayerMove {
             {
                 if (this.transform.position.x < _mousePosittion.x)
                 {
-                    this.transform.position += new Vector3(0.01f, 0, 0);
+                    
+                    this.transform.Translate(new Vector3(speed, 0, 0));
 
                 }
                 if (this.transform.position.x > _mousePosittion.x)
                 {
-                    this.transform.position -= new Vector3(0.01f, 0, 0);
+                    this.transform.Translate(new Vector3(-speed, 0, 0));
                 }
             }
         }
