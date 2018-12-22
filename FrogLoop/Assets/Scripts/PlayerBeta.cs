@@ -32,10 +32,12 @@ public class PlayerBeta : IPlayerMove {
     {
         
         float x = this.transform.position.x;
+
+        // Vector3 _mousePosittion = Input.mousePosition - new Vector3(Screen.width / 2, 0, 0);
+        Vector2 _mousePosittion = InputManager.inputManager.tapPosition;
         
-        Vector3 _mousePosittion = Input.mousePosition - new Vector3(Screen.width / 2, 0, 0);
-        Debug.Log(x);
-        if (x < _mousePosittion.x)
+
+            if (x < _mousePosittion.x)
         {
             this.transform.position += new Vector3(0.01f, 0, 0);
            
