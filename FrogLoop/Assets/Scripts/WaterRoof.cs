@@ -20,6 +20,7 @@ public class WaterRoof : MonoBehaviour {
             if (collider.gameObject.GetComponent<PlayerStatus>().status == PlayerStatus.Status.ALPHA)
             {
                 collider.gameObject.GetComponent<PlayerAlpha>().JumpFlag = false;
+                collider.gameObject.GetComponent<PlayerAlpha>().Jumping = false;
             }
         }
     }
@@ -27,11 +28,23 @@ public class WaterRoof : MonoBehaviour {
     {
         if (collider.gameObject.tag.Contains("Player"))
         {
-            if (collider.transform.position.y > transform.position.y)
+            if (collider.gameObject.GetComponent<PlayerStatus>().status == PlayerStatus.Status.ALPHA)
             {
-                //collider.transform.Translate(Vector3.up * (transform.position.y - collider.transform.position.y) * 0.9f);
-                collider.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * (transform.position.y - collider.transform.position.y) * 90f);
+                if (collider.gameObject.GetComponent<PlayerAlpha>().Jumping)
+                {
+                    return;
+                }
             }
+            PushBack(collider);
+        }
+    }
+
+    void PushBack(Collider2D collider)
+    {
+        if (collider.transform.position.y > transform.position.y)
+        {
+            var mag = (collider.transform.position.y - transform.position.y);
+            collider.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * mag * mag * -100);
         }
     }
 }
