@@ -5,16 +5,24 @@ using UnityEngine;
 //カエル
 public class PlayerGamma : IPlayerMove
 {
+    Rigidbody2D rigidbody;
+
     [SerializeField]
     private float _speed;//カエルのスピード
+    [SerializeField]
+    private float _jumpingPower;//ジャンプ力
 
     private float _oneSide = 0.15f;//スプライトの一辺の長さ
 
-    private Vector2 _playerPos;
+    private Vector2 _playerPosition;
     private Vector2 _mousePosition;
+    private Vector2 _dragPosition;
+
+    private bool _jump;//ジャンプするタイミングを判断する
     void Start()
     {
         //Debug.Log("Start");
+        rigidbody = GetComponent<Rigidbody2D>();
     }
 
     void OnEnable()
@@ -25,35 +33,43 @@ public class PlayerGamma : IPlayerMove
     void FixedUpdate()//ここメイン
     {
 
-        if (InputManager.inputManager.state == InputManager.TouchState.PRESSING)
+        rigidbody.gravityScale = 1.0f;
+        if (InputManager.inputManager.PlayerDrag == true)
         {
-
-            _playerPos = this.transform.position;
-            _mousePosition = InputManager.inputManager.tapPosition;
-            Move();
-
+            _jump = true;
+            _dragPosition = InputManager.inputManager.tapPosition;
+            
+        }
+        else if (InputManager.inputManager.PlayerDrag == false)
+        {
+            Debug.Log(_dragPosition);
+            Debug.Log(_jump);
+            if (InputManager.inputManager.state == InputManager.TouchState.PRESSING)//プレイヤー移動
+            {
+                _playerPosition = this.transform.position;
+                _mousePosition = InputManager.inputManager.tapPosition;
+                Move();
+            }
+            if (_jump == true)
+            {
+                rigidbody.AddForce((_playerPosition - _dragPosition) * _jumpingPower);
+                _jump = false;
+            }
         }
 
-        if (Input.GetKeyDown("a"))//デバッグ用
-        {
-            _playerPos = this.transform.position;
-            _mousePosition = InputManager.inputManager.tapPosition;
-            Debug.Log("マウス:" + _mousePosition);
-            Debug.Log("プレイヤー" + _playerPos);
-        }
     }
 
     protected override void Move()
     {
 
-        if (_playerPos.x  + _oneSide/2 < _mousePosition.x)//プレイヤーより右側タップ
+        if (_playerPosition.x + _oneSide / 2 < _mousePosition.x)//プレイヤーより右側タップ
         {
-            _playerPos += new Vector2(_speed, 0);
+            _playerPosition += new Vector2(_speed, 0);
         }
-        else if (_playerPos.x - _oneSide/2> _mousePosition.x)//プレイヤーより左側をタップ
+        else if (_playerPosition.x - _oneSide / 2 > _mousePosition.x)//プレイヤーより左側をタップ
         {
-            _playerPos -= new Vector2(_speed, 0);
+            _playerPosition -= new Vector2(_speed, 0);
         }
-        this.transform.position = _playerPos;//変更したポジションを参照
+        this.transform.position = _playerPosition;//変更したポジションを参照
     }
 }
