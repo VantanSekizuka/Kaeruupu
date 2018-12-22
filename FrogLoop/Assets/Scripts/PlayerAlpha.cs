@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerAlpha : IPlayerMove {
 
     Rigidbody2D rigidbody;
+    [SerializeField] float speadScale;
+    [SerializeField] float maxSpead;
     void Start()
     {
         Debug.Log("Start");
@@ -30,9 +32,16 @@ public class PlayerAlpha : IPlayerMove {
             rigidbody.gravityScale = 0.0f;
             if (InputManager.inputManager.state == InputManager.TouchState.PRESSING)
             {
-                rigidbody.AddForce(10*(InputManager.inputManager.tapPosition - new Vector2(transform.position.x, transform.position.y)));
+                rigidbody.AddForce((InputManager.inputManager.tapPosition - new Vector2(transform.position.x, transform.position.y)).normalized * speadScale);
+                if (rigidbody.velocity.sqrMagnitude > maxSpead * maxSpead)
+                {
+                    rigidbody.velocity = rigidbody.velocity.normalized * maxSpead;
+                }
             }
-            rigidbody.velocity *= 0.9f;
+            else
+            {
+                rigidbody.velocity *= 0.94f;
+            }
         }
         else
         {
