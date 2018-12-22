@@ -9,6 +9,10 @@ public class Ground : MonoBehaviour {
         if (collider.gameObject.tag.Contains("Player"))
         {
             IPlayerMove.OnGroundFlag = true;
+            if(collider.gameObject.GetComponent<PlayerGamma>().JumpingFlag == true)
+            {
+                collider.gameObject.GetComponent<PlayerGamma>().JumpingFlag = false;
+            }
         }
     }
 

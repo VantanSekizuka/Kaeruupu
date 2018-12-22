@@ -18,7 +18,7 @@ public class PlayerGamma : IPlayerMove
     private Vector2 _mousePosition;
     private Vector2 _dragPosition;
 
-    private bool _jump;//ジャンプするタイミングを判断する
+    public bool JumpingFlag { get; set; }//ジャンプするタイミングを判断する
     void Start()
     {
         //Debug.Log("Start");
@@ -28,33 +28,43 @@ public class PlayerGamma : IPlayerMove
     void OnEnable()
     {
         //Debug.Log("Enable");
+        //JumpingFlag = false;
     }
 
     void FixedUpdate()//ここメイン
     {
 
         rigidbody.gravityScale = 1.0f;
-        if (InputManager.inputManager.PlayerDrag == true)
+        if (JumpingFlag == false)
         {
-            _jump = true;
-            _dragPosition = InputManager.inputManager.tapPosition;
-            _playerPosition = this.transform.position;
+            if (InputManager.inputManager.PlayerDrag == true)
+            {
 
-        }
-        else if (InputManager.inputManager.PlayerDrag == false)
-        {            
-            if (InputManager.inputManager.state == InputManager.TouchState.PRESSING)//プレイヤー移動
-            {
+                _dragPosition = InputManager.inputManager.tapPosition;
                 _playerPosition = this.transform.position;
-                _mousePosition = InputManager.inputManager.tapPosition;
-                Move();
+
+                if (InputManager.inputManager.state == InputManager.TouchState.RELEASE)
+                {
+
+                    Jump();
+                    JumpingFlag = true;
+                }
+
             }
-            if (_jump == true)
+            else if (InputManager.inputManager.PlayerDrag == false)
             {
-                rigidbody.AddForce((_playerPosition - _dragPosition) * _jumpingPower);
-                _jump = false;
+
+                if (InputManager.inputManager.state == InputManager.TouchState.PRESSING)//プレイヤー移動
+                {
+                    _playerPosition = this.transform.position;
+                    _mousePosition = InputManager.inputManager.tapPosition;
+                    Move();
+                }
+
+
             }
         }
+
 
     }
 
@@ -70,5 +80,10 @@ public class PlayerGamma : IPlayerMove
             _playerPosition -= new Vector2(_speed, 0);
         }
         this.transform.position = _playerPosition;//変更したポジションを参照
+    }
+    void Jump()
+    {
+        rigidbody.AddForce((_playerPosition - _dragPosition) * _jumpingPower);
+        Debug.Log("JUMP");
     }
 }
