@@ -38,12 +38,11 @@ public class PlayerGamma : IPlayerMove
         {
             _jump = true;
             _dragPosition = InputManager.inputManager.tapPosition;
-            
+            _playerPosition = this.transform.position;
+
         }
         else if (InputManager.inputManager.PlayerDrag == false)
-        {
-            Debug.Log(_dragPosition);
-            Debug.Log(_jump);
+        {            
             if (InputManager.inputManager.state == InputManager.TouchState.PRESSING)//プレイヤー移動
             {
                 _playerPosition = this.transform.position;
