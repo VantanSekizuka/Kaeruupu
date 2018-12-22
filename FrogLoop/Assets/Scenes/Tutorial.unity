@@ -160,7 +160,7 @@ Prefab:
     - target: {fileID: 114662450193828442, guid: c44418a3c4aef924d8fbf3b5cc5a1663,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114662450193828442, guid: c44418a3c4aef924d8fbf3b5cc5a1663,
         type: 2}
@@ -180,7 +180,12 @@ Prefab:
     - target: {fileID: 114578521583468128, guid: c44418a3c4aef924d8fbf3b5cc5a1663,
         type: 2}
       propertyPath: _jumpingPower
-      value: 200
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114578521583468128, guid: c44418a3c4aef924d8fbf3b5cc5a1663,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c44418a3c4aef924d8fbf3b5cc5a1663, type: 2}
@@ -1557,14 +1562,6 @@ Prefab:
     - target: {fileID: 1763098618772408, guid: 8c3baa9244a105c4884343f8a12ac609, type: 2}
       propertyPath: m_Name
       value: GrassFloor (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4754237266812556, guid: 8c3baa9244a105c4884343f8a12ac609, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 7.4911385
-      objectReference: {fileID: 0}
-    - target: {fileID: 4754237266812556, guid: 8c3baa9244a105c4884343f8a12ac609, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 50.77315
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c3baa9244a105c4884343f8a12ac609, type: 2}
