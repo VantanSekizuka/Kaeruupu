@@ -8,10 +8,13 @@ public class PlayerAlpha : IPlayerMove {
     Rigidbody2D rigidbody;
     [SerializeField] float speadScale;
     [SerializeField] float maxSpead;
+    public bool JumpFlag { get; set; }
     void Start()
     {
         Debug.Log("Start");
         rigidbody = GetComponent<Rigidbody2D>();
+        JumpFlag = false;
+        GetComponent<PlayerStatus>().status = PlayerStatus.Status.ALPHA;
     }
 
     void OnEnable()
@@ -26,28 +29,45 @@ public class PlayerAlpha : IPlayerMove {
 
     protected override void Move()
     {
-        if (InWaterFlag)
+        
+        if (InputManager.inputManager.PlayerDrag && JumpFlag)
         {
-            //水中
             rigidbody.gravityScale = 0.0f;
-            if (InputManager.inputManager.state == InputManager.TouchState.PRESSING)
-            {
-                rigidbody.AddForce((InputManager.inputManager.tapPosition - new Vector2(transform.position.x, transform.position.y)).normalized * speadScale);
-                if (rigidbody.velocity.sqrMagnitude > maxSpead * maxSpead)
-                {
-                    rigidbody.velocity = rigidbody.velocity.normalized * maxSpead;
-                }
-            }
-            else
-            {
-                rigidbody.velocity *= 0.94f;
-            }
+            rigidbody.velocity *= 0.85f;
+            Debug.Log("awawa");
         }
         else
         {
-            //地面
-            rigidbody.gravityScale = 1.0f;
+            if (InWaterFlag)
+            {
+                WaterMove();
+            }
+            else
+            {
+                GroundMove();
+            }
         }
-        Debug.Log(InputManager.inputManager.PlayerDrag);
+    }
+
+    void GroundMove()
+    {
+        rigidbody.gravityScale = 1.0f;
+    }
+
+    void WaterMove()
+    {
+        rigidbody.gravityScale = 0.2f;
+        if (InputManager.inputManager.state == InputManager.TouchState.PRESSING)
+        {
+            rigidbody.AddForce((InputManager.inputManager.tapPosition - new Vector2(transform.position.x, transform.position.y)).normalized * speadScale);
+            if (rigidbody.velocity.sqrMagnitude > maxSpead * maxSpead)
+            {
+                rigidbody.velocity = rigidbody.velocity.normalized * maxSpead;
+            }
+        }
+        //else
+        {
+            rigidbody.velocity *= 0.94f;
+        }
     }
 }
