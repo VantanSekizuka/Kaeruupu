@@ -37,6 +37,7 @@ public class PlayerAlpha : IPlayerMove {
 
     protected override void Move()
     {
+        rigidbody.gravityScale = 1.0f;
         if (InputManager.inputManager.PlayerDrag && JumpFlag)
         {
             rigidbody.gravityScale = 0.0f;
@@ -54,7 +55,7 @@ public class PlayerAlpha : IPlayerMove {
             {
                 WaterMove();
             }
-            else
+            else if(OnGroundFlag)
             {
                 GroundMove();
             }
@@ -63,7 +64,6 @@ public class PlayerAlpha : IPlayerMove {
 
     void GroundMove()
     {
-        rigidbody.gravityScale = 1.0f;
         if (InputManager.inputManager.state == InputManager.TouchState.PRESSING)
         {
             var _velX = (InputManager.inputManager.tapPosition.x - transform.position.x);

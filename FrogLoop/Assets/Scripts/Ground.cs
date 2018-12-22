@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class Ground : MonoBehaviour {
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.gameObject.tag.Contains("Player"))
+        if (collider.gameObject.tag.Contains("Player"))
         {
-            if (collision.gameObject.GetComponent<PlayerStatus>().status == PlayerStatus.Status.GAMMA)
-            {
-                if (collision.gameObject.GetComponent<PlayerGamma>().JumpingFlag == true)
-                {
-                    collision.gameObject.GetComponent<PlayerGamma>().JumpingFlag = false;
-                }
-            }
+            IPlayerMove.OnGroundFlag = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag.Contains("Player"))
+        {
+            IPlayerMove.OnGroundFlag = false;
         }
     }
 }
