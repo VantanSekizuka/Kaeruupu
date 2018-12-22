@@ -46,11 +46,11 @@ public class PlayerGamma : IPlayerMove
     protected override void Move()
     {
 
-        if (_playerPos.x < _mousePosition.x)//プレイヤーより右側タップ
+        if (_playerPos.x  + _oneSide/2 < _mousePosition.x)//プレイヤーより右側タップ
         {
             _playerPos += new Vector2(_speed, 0);
         }
-        else if (_playerPos.x > _mousePosition.x)//プレイヤーより左側をタップ
+        else if (_playerPos.x - _oneSide/2> _mousePosition.x)//プレイヤーより左側をタップ
         {
             _playerPos -= new Vector2(_speed, 0);
         }
