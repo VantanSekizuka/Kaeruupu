@@ -11,6 +11,7 @@ public class PlayerAlpha : IPlayerMove {
     [SerializeField] float maxSpeadWater;
     [SerializeField] float maxSpeadGround;
     [SerializeField] float waterGravity = 0.2f;
+    [SerializeField] float groundJumpPower = 0.2f;
     public bool JumpFlag { get; set; }
     public bool JumpSet { get; set; }
     public bool Jumping { get; set; }
@@ -47,7 +48,12 @@ public class PlayerAlpha : IPlayerMove {
         {
             JumpSet = false;
             Jumping = true;
-            rigidbody.AddForce((new Vector2(transform.position.x, transform.position.y) - InputManager.inputManager.tapPosition)*150);
+            Vector2 jumpDir = (new Vector2(transform.position.x, transform.position.y) - InputManager.inputManager.tapPosition) * 150;
+            if (OnGroundFlag)
+            {
+                jumpDir *= groundJumpPower;
+            }
+            rigidbody.AddForce(jumpDir);
         }
         else
         {
@@ -57,7 +63,7 @@ public class PlayerAlpha : IPlayerMove {
             }
             else if(OnGroundFlag)
             {
-                GroundMove();
+                //GroundMove();
                 JumpFlag = true;
             }
             else
