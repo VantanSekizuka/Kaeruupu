@@ -16,7 +16,7 @@ public class PlayerStatus : MonoBehaviour {
     PlayerGamma gamma;
 
     void Start () {
-        status = Status.BETA;
+        status = Status.ALPHA;
         alpha = GetComponent<PlayerAlpha>();
         beta = GetComponent<PlayerBeta>();
         gamma = GetComponent<PlayerGamma>();

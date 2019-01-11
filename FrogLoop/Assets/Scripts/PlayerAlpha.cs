@@ -16,7 +16,6 @@ public class PlayerAlpha : IPlayerMove {
     public bool Jumping { get; set; }
     void Start()
     {
-        Debug.Log("Start");
         rigidbody = GetComponent<Rigidbody2D>();
         GetComponent<PlayerStatus>().status = PlayerStatus.Status.ALPHA;
         JumpFlag = false;
@@ -26,13 +25,13 @@ public class PlayerAlpha : IPlayerMove {
 
     void OnEnable()
     {
-        Debug.Log("Enable");
+        JumpSet = false;
     }
 
     void FixedUpdate()
     {
         Move();
-        Debug.Log(InWaterFlag);
+        Debug.Log(JumpFlag);
     }
 
     protected override void Move()
@@ -43,6 +42,7 @@ public class PlayerAlpha : IPlayerMove {
             rigidbody.gravityScale = 0.0f;
             rigidbody.velocity *= 0.92f;
             JumpSet = true;
+            Debug.Log("jump");
         }else if (!InputManager.inputManager.PlayerDrag && JumpSet)
         {
             JumpSet = false;
@@ -58,6 +58,11 @@ public class PlayerAlpha : IPlayerMove {
             else if(OnGroundFlag)
             {
                 GroundMove();
+                JumpFlag = true;
+            }
+            else
+            {
+                JumpFlag = false;
             }
         }
     }

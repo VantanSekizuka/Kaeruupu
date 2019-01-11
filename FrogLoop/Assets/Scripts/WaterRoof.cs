@@ -5,6 +5,7 @@ using UnityEngine;
 public class WaterRoof : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D collider)
     {
+        Debug.Log("a");
         if (collider.gameObject.tag.Contains("Player"))
         {
             if (collider.gameObject.GetComponent<PlayerStatus>().status == PlayerStatus.Status.ALPHA)
