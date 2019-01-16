@@ -122,7 +122,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4754237266812556, guid: 8c3baa9244a105c4884343f8a12ac609, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 5.83
+      value: 13.3151
       objectReference: {fileID: 0}
     - target: {fileID: 4754237266812556, guid: 8c3baa9244a105c4884343f8a12ac609, type: 2}
       propertyPath: m_LocalPosition.y
@@ -154,7 +154,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4754237266812556, guid: 8c3baa9244a105c4884343f8a12ac609, type: 2}
       propertyPath: m_LocalScale.x
-      value: 50
+      value: 108.47651
       objectReference: {fileID: 0}
     - target: {fileID: 4754237266812556, guid: 8c3baa9244a105c4884343f8a12ac609, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -342,12 +342,17 @@ Prefab:
     - target: {fileID: 114662450193828442, guid: c44418a3c4aef924d8fbf3b5cc5a1663,
         type: 2}
       propertyPath: maxSpead
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114662450193828442, guid: c44418a3c4aef924d8fbf3b5cc5a1663,
         type: 2}
       propertyPath: speed
       value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114662450193828442, guid: c44418a3c4aef924d8fbf3b5cc5a1663,
+        type: 2}
+      propertyPath: floorSpeed
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c44418a3c4aef924d8fbf3b5cc5a1663, type: 2}

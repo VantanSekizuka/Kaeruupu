@@ -7,7 +7,7 @@ public class PlayerBeta : IPlayerMove {
 
     Rigidbody2D rigidbody;
     [SerializeField] float speadScale = 8;
-    [SerializeField] float maxSpead = 8;
+    [SerializeField] float maxSpead = 5;
     [SerializeField] float floorSpeed = 10;
  
 
@@ -33,7 +33,7 @@ public class PlayerBeta : IPlayerMove {
 
     protected override void Move()
     {
-
+        GetComponent<Animator>().SetBool("Seiming", false);
 
 
         if (InWaterFlag)
@@ -52,6 +52,7 @@ public class PlayerBeta : IPlayerMove {
             {
                 rigidbody.velocity *= 0.94f;
             }
+            GetComponent<Animator>().SetBool("Seiming", true);
         }
         else
         {
@@ -64,8 +65,8 @@ public class PlayerBeta : IPlayerMove {
                 if (this.transform.position.x < _mousePosittion.x)
                 {
 
-                  
-                    if (rigidbody.velocity.magnitude < 5.0f)
+                    GetComponent<Animator>().SetBool("Walkkng", true);
+                    if (rigidbody.velocity.magnitude < maxSpead)
                     {
                         rigidbody.AddForce(new Vector3(floorSpeed, 0, 0));
                     }
@@ -73,11 +74,15 @@ public class PlayerBeta : IPlayerMove {
                 }
                 if (this.transform.position.x > _mousePosittion.x)
                 {
-                    if (rigidbody.velocity.magnitude < 5.0f)
+                    GetComponent<Animator>().SetBool("Walkkng", true);
+                    if (rigidbody.velocity.magnitude < maxSpead)
                     {
                         rigidbody.AddForce(new Vector3(-floorSpeed, 0, 0));
                     }
                 }
+            }
+            else {
+                GetComponent<Animator>().SetBool("Walkkng", false);
             }
         }
 
