@@ -31,9 +31,29 @@ public class PlayerAlpha : IPlayerMove {
 
     void FixedUpdate()
     {
+        PlayerDirectionJump();
         Move();
         Debug.Log(JumpFlag);
     }
+
+    public void PlayerDirectionJump()
+    {
+        float val = 1.0f;
+        if (JumpSet) val *= -1.0f;
+
+        if (Input.GetMouseButton(0))
+        {
+            if (this.transform.position.x < InputManager.inputManager.tapPosition.x)
+            {
+                transform.localScale = new Vector3(val, 1, 1);
+            }
+            else
+            {
+                transform.localScale = new Vector3(-val, 1, 1);
+            }
+        }
+    }
+
 
     protected override void Move()
     {
