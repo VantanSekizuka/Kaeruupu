@@ -38,11 +38,11 @@ public class PlayerGamma : IPlayerMove
 
     void FixedUpdate()//ここメイン
     {
-        PlayerDirection();
+        GPlayerDirection();
         rigidbody.gravityScale = 1.0f;
         if (Input.GetKeyDown("a"))
         {
-            Debug.Log(JumpingFlag); 
+            Debug.Log(JumpingFlag);
         }
         if (JumpingFlag == false)
         {
@@ -87,10 +87,10 @@ public class PlayerGamma : IPlayerMove
 
         if (_playerPosition.x + _oneSide / 2 < _mousePosition.x)//プレイヤーより右側タップ
         {
-            
+
             if (_maxSpeed <= rigidbody.velocity.magnitude)
             {
-                rigidbody.velocity = new Vector2(_maxSpeed,0);
+                rigidbody.velocity = new Vector2(_maxSpeed, 0);
             }
             else
             {
@@ -99,10 +99,10 @@ public class PlayerGamma : IPlayerMove
         }
         else if (_playerPosition.x - _oneSide / 2 > _mousePosition.x)//プレイヤーより左側をタップ
         {
-            
+
             if (_maxSpeed <= rigidbody.velocity.magnitude)
             {
-               
+
                 rigidbody.velocity = new Vector2(-_maxSpeed, 0);
 
             }
@@ -112,11 +112,39 @@ public class PlayerGamma : IPlayerMove
             }
 
         }
-        
+
     }
     void Jump()
     {
         rigidbody.AddForce((_playerPosition - _dragPosition) * _jumpingPower);
         Debug.Log("JUMP");
+    }
+    void GPlayerDirection()
+    {
+        if (InputManager.inputManager.PlayerDrag == true)
+        {
+            if (this.transform.position.y - _oneSide-1 > _dragPosition.y)
+            {
+                if (this.transform.position.x > _dragPosition.x)
+                {
+                    transform.localScale = new Vector3(1, 1, 1);
+                }
+                else
+                {
+                    transform.localScale = new Vector3(-1, 1, 1);
+                }
+            }
+        }
+        else if (Input.GetMouseButton(0))
+        {
+            if (this.transform.position.x < InputManager.inputManager.tapPosition.x)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+        }
     }
 }
