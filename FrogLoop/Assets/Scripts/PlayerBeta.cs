@@ -31,6 +31,21 @@ public class PlayerBeta : IPlayerMove {
         //ここでむーぶよびだす
     }
 
+    public void PlayerDirection()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            if (this.transform.position.x < InputManager.inputManager.tapPosition.x)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+        }
+    }
+
     protected override void Move()
     {
         GetComponent<Animator>().SetBool("Seiming", false);
@@ -70,6 +85,7 @@ public class PlayerBeta : IPlayerMove {
                     {
                         rigidbody.AddForce(new Vector3(floorSpeed, 0, 0));
                     }
+                  
 
                 }
                 if (this.transform.position.x > _mousePosittion.x)
@@ -79,6 +95,7 @@ public class PlayerBeta : IPlayerMove {
                     {
                         rigidbody.AddForce(new Vector3(-floorSpeed, 0, 0));
                     }
+                    
                 }
             }
             else {
