@@ -25,12 +25,15 @@ public class PlayerGamma : IPlayerMove
     {
         //Debug.Log("Start");
         rigidbody = GetComponent<Rigidbody2D>();
+        JumpingFlag = false;
+
     }
 
     void OnEnable()
     {
         //Debug.Log("Enable");
-        //JumpingFlag = false;
+        JumpingFlag = false;
+
     }
 
     void FixedUpdate()//ここメイン
