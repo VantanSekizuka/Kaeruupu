@@ -51,7 +51,7 @@ public class PlayerGamma : IPlayerMove
 
                 if (InputManager.inputManager.state == InputManager.TouchState.RELEASE)
                 {
-
+                    GetComponent<Animator>().SetTrigger("Jump");
                     Jump();
                     JumpingFlag = true;
                 }
@@ -64,9 +64,14 @@ public class PlayerGamma : IPlayerMove
                 {
                     _playerPosition = this.transform.position;
                     _mousePosition = InputManager.inputManager.tapPosition;
+                    GetComponent<Animator>().SetBool("Walkkng", true);
                     Move();
                 }
+                else
+                {
+                    GetComponent<Animator>().SetBool("Walkkng", false);
 
+                }
 
             }
         }
@@ -79,7 +84,7 @@ public class PlayerGamma : IPlayerMove
 
         if (_playerPosition.x + _oneSide / 2 < _mousePosition.x)//プレイヤーより右側タップ
         {
-            Debug.Log("右");
+            
             if (_maxSpeed <= rigidbody.velocity.magnitude)
             {
                 rigidbody.velocity = new Vector2(_maxSpeed,0);
@@ -91,9 +96,10 @@ public class PlayerGamma : IPlayerMove
         }
         else if (_playerPosition.x - _oneSide / 2 > _mousePosition.x)//プレイヤーより左側をタップ
         {
-            Debug.Log("左");
-            if (_maxSpeed <= -rigidbody.velocity.magnitude)
+            
+            if (_maxSpeed <= rigidbody.velocity.magnitude)
             {
+               
                 rigidbody.velocity = new Vector2(-_maxSpeed, 0);
 
             }
