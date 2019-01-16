@@ -33,7 +33,6 @@ public class PlayerAlpha : IPlayerMove {
     {
         PlayerDirectionJump();
         Move();
-        Debug.Log(JumpFlag);
     }
 
     public void PlayerDirectionJump()
