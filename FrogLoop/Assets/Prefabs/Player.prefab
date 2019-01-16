@@ -75,7 +75,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1329128229579656}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.8, y: 10.4, z: 0}
+  m_LocalPosition: {x: -17.94, y: -1.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4248224791865300}
@@ -271,7 +271,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1329128229579656}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a77417a544fa79a4c94151de58400801, type: 3}
   m_Name: 
@@ -293,21 +293,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6316afbf36703e42b558cffa62db35e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0
-  _jumpingPower: 0
+  _speed: 0.2
+  _jumpingPower: 100
 --- !u!114 &114662450193828442
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1329128229579656}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4717873507f5cdc408a67d1b6ea41b15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speadScale: 0
-  maxSpead: 0
+  speadScale: 8
+  maxSpead: 8
   speed: 0.2
 --- !u!114 &114718248106704666
 MonoBehaviour:

@@ -35,6 +35,10 @@ public class PlayerGamma : IPlayerMove
     {
 
         rigidbody.gravityScale = 1.0f;
+        if (Input.GetKeyDown("a"))
+        {
+            Debug.Log(JumpingFlag); 
+        }
         if (JumpingFlag == false)
         {
             if (InputManager.inputManager.PlayerDrag == true)
