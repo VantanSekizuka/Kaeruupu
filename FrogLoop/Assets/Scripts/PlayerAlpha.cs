@@ -63,7 +63,7 @@ public class PlayerAlpha : IPlayerMove {
             }
             else if(OnGroundFlag)
             {
-                //GroundMove();
+                GetComponent<Animator>().SetBool("IfMove", false);
                 JumpFlag = true;
             }
             else
@@ -114,5 +114,6 @@ public class PlayerAlpha : IPlayerMove {
             }
         }
         rigidbody.velocity *= 0.92f;
+        GetComponent<Animator>().SetBool("IfMove", true);
     }
 }
