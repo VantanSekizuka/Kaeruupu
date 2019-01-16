@@ -1412,6 +1412,21 @@ Prefab:
       propertyPath: floorSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114578521583468128, guid: c44418a3c4aef924d8fbf3b5cc5a1663,
+        type: 2}
+      propertyPath: _maxSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114578521583468128, guid: c44418a3c4aef924d8fbf3b5cc5a1663,
+        type: 2}
+      propertyPath: _speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114578521583468128, guid: c44418a3c4aef924d8fbf3b5cc5a1663,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c44418a3c4aef924d8fbf3b5cc5a1663, type: 2}
   m_IsPrefabAsset: 0

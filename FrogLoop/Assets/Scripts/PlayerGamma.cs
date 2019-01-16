@@ -8,6 +8,8 @@ public class PlayerGamma : IPlayerMove
     Rigidbody2D rigidbody;
 
     [SerializeField]
+    private float _maxSpeed;//カエルのスピード
+    [SerializeField]
     private float _speed;//カエルのスピード
     [SerializeField]
     private float _jumpingPower;//ジャンプ力
@@ -77,14 +79,31 @@ public class PlayerGamma : IPlayerMove
 
         if (_playerPosition.x + _oneSide / 2 < _mousePosition.x)//プレイヤーより右側タップ
         {
-            rigidbody.AddForce(new Vector3(10.0f,0,0));
+            Debug.Log("右");
+            if (_maxSpeed <= rigidbody.velocity.magnitude)
+            {
+                rigidbody.velocity = new Vector2(_maxSpeed,0);
+            }
+            else
+            {
+                rigidbody.AddForce(new Vector3(_speed, 0, 0));
+            }
         }
         else if (_playerPosition.x - _oneSide / 2 > _mousePosition.x)//プレイヤーより左側をタップ
         {
-            rigidbody.AddForce(new Vector3(-10.0f,0,0));
+            Debug.Log("左");
+            if (_maxSpeed <= -rigidbody.velocity.magnitude)
+            {
+                rigidbody.velocity = new Vector2(-_maxSpeed, 0);
+
+            }
+            else
+            {
+                rigidbody.AddForce(new Vector3(-_speed, 0, 0));
+            }
 
         }
-        this.transform.position = _playerPosition;//変更したポジションを参照
+        
     }
     void Jump()
     {
