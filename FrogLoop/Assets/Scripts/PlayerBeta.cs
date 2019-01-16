@@ -24,8 +24,8 @@ public class PlayerBeta : IPlayerMove {
 
     void FixedUpdate()
     {
-       
-           
+
+        PlayerDirection();
             Move();
         
         //ここでむーぶよびだす
