@@ -6,8 +6,9 @@ using UnityEngine;
 public class PlayerBeta : IPlayerMove {
 
     Rigidbody2D rigidbody;
-    [SerializeField] float speadScale;
-    [SerializeField] float maxSpead;
+    [SerializeField] float speadScale = 8;
+    [SerializeField] float maxSpead = 8;
+    
 
     public float speed = 0.2f;
 
@@ -63,13 +64,20 @@ public class PlayerBeta : IPlayerMove {
             {
                 if (this.transform.position.x < _mousePosittion.x)
                 {
-                    
-                    this.transform.Translate(new Vector3(speed, 0, 0));
+
+                  
+                    if (rigidbody.velocity.magnitude < 5.0f)
+                    {
+                        rigidbody.AddForce(new Vector3(speed, 0, 0));
+                    }
 
                 }
                 if (this.transform.position.x > _mousePosittion.x)
                 {
-                    this.transform.Translate(new Vector3(-speed, 0, 0));
+                    if (rigidbody.velocity.magnitude < 5.0f)
+                    {
+                        rigidbody.AddForce(new Vector3(-speed, 0, 0));
+                    }
                 }
             }
         }
