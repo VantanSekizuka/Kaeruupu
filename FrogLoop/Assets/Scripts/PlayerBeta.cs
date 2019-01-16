@@ -8,9 +8,8 @@ public class PlayerBeta : IPlayerMove {
     Rigidbody2D rigidbody;
     [SerializeField] float speadScale = 8;
     [SerializeField] float maxSpead = 8;
-    
-
-    public float speed = 0.2f;
+    [SerializeField] float floorSpeed = 10;
+ 
 
     void Start()
     {
@@ -68,7 +67,7 @@ public class PlayerBeta : IPlayerMove {
                   
                     if (rigidbody.velocity.magnitude < 5.0f)
                     {
-                        rigidbody.AddForce(new Vector3(speed, 0, 0));
+                        rigidbody.AddForce(new Vector3(floorSpeed, 0, 0));
                     }
 
                 }
@@ -76,7 +75,7 @@ public class PlayerBeta : IPlayerMove {
                 {
                     if (rigidbody.velocity.magnitude < 5.0f)
                     {
-                        rigidbody.AddForce(new Vector3(-speed, 0, 0));
+                        rigidbody.AddForce(new Vector3(-floorSpeed, 0, 0));
                     }
                 }
             }

@@ -1402,6 +1402,16 @@ Prefab:
       propertyPath: speed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114662450193828442, guid: c44418a3c4aef924d8fbf3b5cc5a1663,
+        type: 2}
+      propertyPath: speadScale
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114662450193828442, guid: c44418a3c4aef924d8fbf3b5cc5a1663,
+        type: 2}
+      propertyPath: floorSpeed
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c44418a3c4aef924d8fbf3b5cc5a1663, type: 2}
   m_IsPrefabAsset: 0
