@@ -25,14 +25,17 @@ public class PlayerStatus : MonoBehaviour {
         if (alpha.enabled)
         {
             status = Status.ALPHA;
+            GetComponent<Animator>().runtimeAnimatorController = AlphaAnimCont;
         }
         if (beta.enabled)
         {
             status = Status.BETA;
+            GetComponent<Animator>().runtimeAnimatorController = BetaAnimCont;
         }
         if (gamma.enabled)
         {
             status = Status.GAMMA;
+            GetComponent<Animator>().runtimeAnimatorController = GammaAnimCont;
         }
     }
 

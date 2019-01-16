@@ -16,8 +16,9 @@ public class Tree : MonoBehaviour {
     {
         var player = GameObject.Find("Player");
         Camera.allCameras[0].transform.Rotate(Vector3.forward * 90.0f);
-        player.transform.position = transform.Find("Entrance").transform.position;
-        transform.parent.Find("Inner").gameObject.SetActive(true);
+        var inner = transform.parent.Find("Inner");
+        player.transform.position = inner.Find("Entrance").transform.position;
+        inner.gameObject.SetActive(true);
         gameObject.SetActive(false);
     }
 
@@ -25,8 +26,9 @@ public class Tree : MonoBehaviour {
     {
         var player = GameObject.Find("Player");
         Camera.allCameras[0].transform.Rotate(Vector3.forward * -90.0f);
-        player.transform.position = transform.Find("Entrance").transform.position;
-        transform.parent.Find("Outer").gameObject.SetActive(true);
+        var outer = transform.parent.Find("Outer");
+        player.transform.position = outer.Find("Entrance").transform.position;
+        outer.gameObject.SetActive(true);
         gameObject.SetActive(false);
     }
 }
