@@ -77,11 +77,12 @@ public class PlayerGamma : IPlayerMove
 
         if (_playerPosition.x + _oneSide / 2 < _mousePosition.x)//プレイヤーより右側タップ
         {
-            _playerPosition += new Vector2(_speed, 0);
+            rigidbody.AddForce(new Vector3(10.0f,0,0));
         }
         else if (_playerPosition.x - _oneSide / 2 > _mousePosition.x)//プレイヤーより左側をタップ
         {
-            _playerPosition -= new Vector2(_speed, 0);
+            rigidbody.AddForce(new Vector3(-10.0f,0,0));
+
         }
         this.transform.position = _playerPosition;//変更したポジションを参照
     }
