@@ -14,6 +14,9 @@ public class PlayerStatus : MonoBehaviour {
     PlayerAlpha alpha;
     PlayerBeta beta;
     PlayerGamma gamma;
+    [SerializeField] RuntimeAnimatorController AlphaAnimCont;
+    [SerializeField] RuntimeAnimatorController BetaAnimCont;
+    [SerializeField] RuntimeAnimatorController GammaAnimCont;
 
     void Start () {
         alpha = GetComponent<PlayerAlpha>();
@@ -39,6 +42,18 @@ public class PlayerStatus : MonoBehaviour {
         GetPlayerFromStatus(status).enabled = false;
         status = _status;
         GetPlayerFromStatus(status).enabled = true;
+        if (alpha.enabled)
+        {
+            GetComponent<Animator>().runtimeAnimatorController = AlphaAnimCont;
+        }
+        if (beta.enabled)
+        {
+            GetComponent<Animator>().runtimeAnimatorController = BetaAnimCont;
+        }
+        if (gamma.enabled)
+        {
+            GetComponent<Animator>().runtimeAnimatorController = GammaAnimCont;
+        }
     }
 
     IPlayerMove GetPlayerFromStatus(Status _status)

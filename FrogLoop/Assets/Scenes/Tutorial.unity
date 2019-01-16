@@ -1432,6 +1432,21 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 3de40848840c7124395e3ce92ed31cdd, type: 2}
+    - target: {fileID: 114718248106704666, guid: c44418a3c4aef924d8fbf3b5cc5a1663,
+        type: 2}
+      propertyPath: AlphaAnimCont
+      value: 
+      objectReference: {fileID: 9100000, guid: 8efc223075d1e3e42a4e259016859a7f, type: 2}
+    - target: {fileID: 114718248106704666, guid: c44418a3c4aef924d8fbf3b5cc5a1663,
+        type: 2}
+      propertyPath: BetaAnimCont
+      value: 
+      objectReference: {fileID: 9100000, guid: 3de40848840c7124395e3ce92ed31cdd, type: 2}
+    - target: {fileID: 114718248106704666, guid: c44418a3c4aef924d8fbf3b5cc5a1663,
+        type: 2}
+      propertyPath: GammaAnimCont
+      value: 
+      objectReference: {fileID: 9100000, guid: 1c53ae119ca3b40498cd429fe3f88181, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c44418a3c4aef924d8fbf3b5cc5a1663, type: 2}
   m_IsPrefabAsset: 0

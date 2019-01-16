@@ -183,7 +183,7 @@ Animator:
   m_GameObject: {fileID: 1329128229579656}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8efc223075d1e3e42a4e259016859a7f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3de40848840c7124395e3ce92ed31cdd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -293,7 +293,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6316afbf36703e42b558cffa62db35e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0.2
+  _maxSpeed: 30
+  _speed: 5
   _jumpingPower: 100
 --- !u!114 &114662450193828442
 MonoBehaviour:
@@ -308,7 +309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speadScale: 8
   maxSpead: 8
-  speed: 0.2
+  floorSpeed: 10
 --- !u!114 &114718248106704666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -320,6 +321,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d237d1140ab40154c853987a6a445cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AlphaAnimCont: {fileID: 9100000, guid: 8efc223075d1e3e42a4e259016859a7f, type: 2}
+  BetaAnimCont: {fileID: 9100000, guid: 3de40848840c7124395e3ce92ed31cdd, type: 2}
+  GammaAnimCont: {fileID: 9100000, guid: 1c53ae119ca3b40498cd429fe3f88181, type: 2}
 --- !u!114 &114870038408576854
 MonoBehaviour:
   m_ObjectHideFlags: 1
