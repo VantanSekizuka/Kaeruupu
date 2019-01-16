@@ -16,14 +16,26 @@ public class PlayerStatus : MonoBehaviour {
     PlayerGamma gamma;
 
     void Start () {
-        status = Status.ALPHA;
         alpha = GetComponent<PlayerAlpha>();
         beta = GetComponent<PlayerBeta>();
         gamma = GetComponent<PlayerGamma>();
+        if (alpha.enabled)
+        {
+            status = Status.ALPHA;
+        }
+        if (beta.enabled)
+        {
+            status = Status.BETA;
+        }
+        if (gamma.enabled)
+        {
+            status = Status.GAMMA;
+        }
     }
 
     public void Changed(Status _status)
     {
+        Debug.Log(status);
         GetPlayerFromStatus(status).enabled = false;
         status = _status;
         GetPlayerFromStatus(status).enabled = true;

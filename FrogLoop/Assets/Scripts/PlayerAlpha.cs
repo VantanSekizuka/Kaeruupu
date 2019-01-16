@@ -18,7 +18,7 @@ public class PlayerAlpha : IPlayerMove {
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        GetComponent<PlayerStatus>().status = PlayerStatus.Status.ALPHA;
+        //GetComponent<PlayerStatus>().status = PlayerStatus.Status.ALPHA;
         JumpFlag = false;
         JumpSet = false;
         Jumping = false;
