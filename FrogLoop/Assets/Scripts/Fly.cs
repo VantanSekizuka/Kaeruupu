@@ -10,17 +10,28 @@ public class Fly : IEnemy {
     [SerializeField]
     private float Speed;
     private float Fly_height;
-   
+    [SerializeField]
+    private GameObject Fly_Plefab;
+    
+   public GameObject Fly_GameObject { get; set; }
     private float Fly_x;
     private bool Fly_count=false;
     [SerializeField]
     private float Fly_width;
 
+    public void FlyTouch()
+    {
+        Fly_GameObject = Instantiate(Fly_Plefab);
+        Fly_GameObject.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        GameObject.Find("Player").GetComponent<PlayerGamma>().Eat();
+
+        Destroy(this.gameObject);
+        Debug.Log("yes");
+
+    }
     void Start()
     {
-       
-       Fly_y = transform.localPosition.y;
-        Fly_x = transform.localPosition.x;
+      
        //Fly_height = Fly_y + Fly_haba/2;
 
     }
@@ -45,7 +56,7 @@ public class Fly : IEnemy {
         
         //Debug.Log(Fly_count);
         transform.position = new Vector3(Fly_x+Fly_width*Mathf.Sin(Time.time), Fly_y + Fly_haba * Mathf.Sin(Time.time * Speed), transform.position.z);
-
+      
     }
 
     protected override void OnCollisionEnter2D(Collision2D other)
@@ -53,7 +64,7 @@ public class Fly : IEnemy {
         if (other.gameObject.tag == "Player")
         {
             HitingBool = true;
-            Debug.Log(HitingBool);
+            //Debug.Log(HitingBool);
         }
     }
 }

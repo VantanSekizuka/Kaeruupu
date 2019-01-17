@@ -11,17 +11,20 @@ public class Tagame : IEnemy
     [SerializeField]
     private float  Speed;
 
-    [SerializeField]
-    GameObject Kaelu;
-
+   
+   
+   
+    private Vector2 TagamePostion;
     void Start()
     {
-        Kaelu = GameObject.Find("Player");
+      
         
         Tagame_y = transform.localPosition.y;
+     
     }
     protected override void FixedUpdate()
     {
+       
         //time += Time.deltaTime;
         //if (time > 1)
         //{
@@ -48,6 +51,7 @@ public class Tagame : IEnemy
         //}
        
         transform.position = new Vector3(transform.position.x, Tagame_y+Tagame_haba  * Mathf.Sin(Time.time * Speed), transform.position.z);
+        
     }
 
     protected override void OnCollisionEnter2D(Collision2D other)
@@ -57,6 +61,7 @@ public class Tagame : IEnemy
             HitingBool = true;
             Debug.Log(HitingBool);
         }
+       
     }
 }
 

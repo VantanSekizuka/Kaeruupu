@@ -75,7 +75,7 @@ public class JudgeGround : MonoBehaviour
             else Exit();
         }
         IPlayerMove.OnGroundFlag = IsGround;
-        Debug.Log(IsGround);
+        //Debug.Log(IsGround);
     }
 
     void Enter()
