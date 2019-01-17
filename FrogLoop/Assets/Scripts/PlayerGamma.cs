@@ -54,7 +54,7 @@ public class PlayerGamma : IPlayerMove
 
                 if (InputManager.inputManager.state == InputManager.TouchState.RELEASE)
                 {
-                    if ((_playerPosition.y - _dragPosition.y)> 1)
+                    if (_playerPosition.y - _dragPosition.y> 1)
                     {
                         GetComponent<Animator>().SetTrigger("Jump");
                         Jump();
@@ -126,7 +126,7 @@ public class PlayerGamma : IPlayerMove
     {
         if (InputManager.inputManager.PlayerDrag == true)
         {
-            if (this.transform.position.y - _oneSide-1 > _dragPosition.y)
+            if(_playerPosition.y - _dragPosition.y > 1)
             {
                 if (this.transform.position.x + _oneSide> _dragPosition.x)
                 {
@@ -140,7 +140,7 @@ public class PlayerGamma : IPlayerMove
         }
         else if (Input.GetMouseButton(0))
         {
-            if (this.transform.position.x < InputManager.inputManager.tapPosition.x)
+            if (_playerPosition.y - _dragPosition.y > 1)
             {
                 transform.localScale = new Vector3(1, 1, 1);
             }
@@ -149,5 +149,10 @@ public class PlayerGamma : IPlayerMove
                 transform.localScale = new Vector3(-1, 1, 1);
             }
         }
+    }
+    public void Eat()
+    {
+        GetComponent<Animator>().SetTrigger("Eat");
+
     }
 }
