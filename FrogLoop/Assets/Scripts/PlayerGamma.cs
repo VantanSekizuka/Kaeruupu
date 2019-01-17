@@ -54,9 +54,12 @@ public class PlayerGamma : IPlayerMove
 
                 if (InputManager.inputManager.state == InputManager.TouchState.RELEASE)
                 {
-                    GetComponent<Animator>().SetTrigger("Jump");
-                    Jump();
-                    JumpingFlag = true;
+                    if ((_playerPosition.y - _dragPosition.y) * (_playerPosition.y - _dragPosition.y) > 1)
+                    {
+                        GetComponent<Animator>().SetTrigger("Jump");
+                        Jump();
+                        JumpingFlag = true;
+                    }
                 }
 
             }
@@ -125,11 +128,11 @@ public class PlayerGamma : IPlayerMove
         {
             if (this.transform.position.y - _oneSide-1 > _dragPosition.y)
             {
-                if (this.transform.position.x > _dragPosition.x)
+                if (this.transform.position.x + _oneSide> _dragPosition.x)
                 {
                     transform.localScale = new Vector3(1, 1, 1);
                 }
-                else
+                else if (this.transform.position.x - _oneSide < _dragPosition.x)
                 {
                     transform.localScale = new Vector3(-1, 1, 1);
                 }
