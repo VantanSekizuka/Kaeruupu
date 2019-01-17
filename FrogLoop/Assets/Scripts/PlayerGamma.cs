@@ -54,7 +54,7 @@ public class PlayerGamma : IPlayerMove
 
                 if (InputManager.inputManager.state == InputManager.TouchState.RELEASE)
                 {
-                    if (_playerPosition.y - _dragPosition.y> 1)
+                    if (_playerPosition.y - _dragPosition.y > 1)
                     {
                         GetComponent<Animator>().SetTrigger("Jump");
                         Jump();
@@ -124,29 +124,29 @@ public class PlayerGamma : IPlayerMove
     }
     void GPlayerDirection()
     {
-        if (InputManager.inputManager.PlayerDrag == true)
+        if (Input.GetMouseButton(0))
         {
-            if(_playerPosition.y - _dragPosition.y > 1)
-            {
-                if (this.transform.position.x + _oneSide> _dragPosition.x)
-                {
-                    transform.localScale = new Vector3(1, 1, 1);
-                }
-                else if (this.transform.position.x - _oneSide < _dragPosition.x)
-                {
-                    transform.localScale = new Vector3(-1, 1, 1);
-                }
-            }
-        }
-        else if (Input.GetMouseButton(0))
-        {
-            if (_playerPosition.y - _dragPosition.y > 1)
+            if (_playerPosition.x - _mousePosition.x < 1)
             {
                 transform.localScale = new Vector3(1, 1, 1);
             }
             else
             {
                 transform.localScale = new Vector3(-1, 1, 1);
+            }
+        }
+        else if (InputManager.inputManager.PlayerDrag == true)
+        {
+            if (_playerPosition.y - _dragPosition.y > 1)
+            {
+                if (_playerPosition.x + _oneSide > _dragPosition.x)
+                {
+                    transform.localScale = new Vector3(1, 1, 1);
+                }
+                else if (_playerPosition.x - _oneSide < _dragPosition.x)
+                {
+                    transform.localScale = new Vector3(-1, 1, 1);
+                }
             }
         }
     }
