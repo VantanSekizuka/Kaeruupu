@@ -54,7 +54,7 @@ public class PlayerGamma : IPlayerMove
 
                 if (InputManager.inputManager.state == InputManager.TouchState.RELEASE)
                 {
-                    if ((_playerPosition.y - _dragPosition.y) * (_playerPosition.y - _dragPosition.y) > 1)
+                    if ((_playerPosition.y - _dragPosition.y)> 1)
                     {
                         GetComponent<Animator>().SetTrigger("Jump");
                         Jump();
