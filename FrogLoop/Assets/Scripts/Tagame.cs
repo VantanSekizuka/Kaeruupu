@@ -10,9 +10,14 @@ public class Tagame : IEnemy
     private float Tagame_haba;
     [SerializeField]
     private float  Speed;
- 
+
+    [SerializeField]
+    GameObject Kaelu;
+
     void Start()
-    { 
+    {
+        Kaelu = GameObject.Find("Player");
+        
         Tagame_y = transform.localPosition.y;
     }
     protected override void FixedUpdate()
