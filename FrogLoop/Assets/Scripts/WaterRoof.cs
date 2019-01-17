@@ -5,7 +5,6 @@ using UnityEngine;
 public class WaterRoof : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("a");
         if (collider.gameObject.tag.Contains("Player"))
         {
             if (collider.gameObject.GetComponent<PlayerStatus>().status == PlayerStatus.Status.ALPHA)
@@ -38,6 +37,10 @@ public class WaterRoof : MonoBehaviour {
             }
             PushBack(collider);
         }
+        if (collider.gameObject.tag.Contains("Friends"))
+        {
+            PushBack(collider);
+        }
     }
 
     void PushBack(Collider2D collider)
@@ -45,7 +48,7 @@ public class WaterRoof : MonoBehaviour {
         if (collider.transform.position.y > transform.position.y)
         {
             var mag = (collider.transform.position.y - transform.position.y);
-            collider.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * mag * mag * -100);
+            collider.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.down * mag * mag * 150);
         }
     }
 }

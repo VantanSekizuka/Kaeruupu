@@ -11,6 +11,10 @@ public class Water : MonoBehaviour {
         if (other.tag == "Player")
         {
             IPlayerMove.InWaterFlag = true;
+            //if (other.gameObject.GetComponent<PlayerStatus>().status == PlayerStatus.Status.ALPHA)
+            //{
+                other.GetComponent<Rigidbody2D>().drag = 3.0f;
+            //}
         }
     }
 
@@ -19,6 +23,10 @@ public class Water : MonoBehaviour {
         if (other.tag == "Player")
         {
             IPlayerMove.InWaterFlag = false;
+            //if (other.gameObject.GetComponent<PlayerStatus>().status == PlayerStatus.Status.ALPHA)
+            //{
+                other.GetComponent<Rigidbody2D>().drag = 0.0f;
+            //}
         }
     }
 }

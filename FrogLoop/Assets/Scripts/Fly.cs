@@ -21,18 +21,19 @@ public class Fly : IEnemy {
 
     public void FlyTouch()
     {
-        Fly_GameObject = Instantiate(Fly_Plefab);
-        Fly_GameObject.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        GameObject.Find("Player").GetComponent<PlayerGamma>().Eat();
+        var player = GameObject.Find("Player");
+        if (player.GetComponent<PlayerStatus>().status == PlayerStatus.Status.GAMMA)
+        {
+            //Fly_GameObject = Instantiate(Fly_Plefab);
+            //Fly_GameObject.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            GameObject.Find("Player").GetComponent<PlayerGamma>().Eat();
 
-        Destroy(this.gameObject);
-        Debug.Log("yes");
-
+            Destroy(this.gameObject);
+            Debug.Log("yes");
+        }
     }
     void Start()
     {
-      
-       //Fly_height = Fly_y + Fly_haba/2;
 
     }
 
