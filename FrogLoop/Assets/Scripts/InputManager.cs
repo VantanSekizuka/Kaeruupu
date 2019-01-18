@@ -6,6 +6,8 @@ using UnityEngine;
 public class InputManager : MonoBehaviour {
 
     static public InputManager inputManager;
+    [SerializeField] float tapTime = 0.1f;
+    float taptimer;
 
     void Start () {
         inputManager = this;
@@ -22,23 +24,31 @@ public class InputManager : MonoBehaviour {
     }
     public TouchState state;
     public bool PlayerDrag { get; set; }
+    public bool TapFlag { get; private set; }
     void FixedUpdate()
     {
         state = TouchState.FREE;
+        TapFlag = false;
         if (Input.GetMouseButton(0))
         {
             Vector3 screen_point = Input.mousePosition;
             screen_point.z = 10.0f;
             tapPosition = Camera.main.ScreenToWorldPoint(screen_point);
             state = TouchState.PRESSING;
+            taptimer += Time.deltaTime;
         }
         if (Input.GetMouseButtonDown(0))
         {
             state = TouchState.PUSHED;
+            taptimer = 0.0f;
         }
         if (Input.GetMouseButtonUp(0))
         {
             state = TouchState.RELEASE;
+            if (taptimer < tapTime)
+            {
+                TapFlag = true;
+            }
         }
         //Debug.Log(state);
     }

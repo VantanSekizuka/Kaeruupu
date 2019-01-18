@@ -34,7 +34,8 @@ public class Fly : IEnemy {
     }
     void Start()
     {
-
+        Fly_x = transform.position.x;
+        Fly_y = transform.position.y;
     }
 
     protected override void FixedUpdate()

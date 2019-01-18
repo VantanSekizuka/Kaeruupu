@@ -39,7 +39,6 @@ public class PlayerGamma : IPlayerMove
     void FixedUpdate()//ここメイン
     {
         GPlayerDirection();
-        rigidbody.gravityScale = 1.0f;
         if (Input.GetKeyDown("a"))
         {
             Debug.Log(JumpingFlag);

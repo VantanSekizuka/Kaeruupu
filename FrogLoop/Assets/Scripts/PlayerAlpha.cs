@@ -14,20 +14,17 @@ public class PlayerAlpha : IPlayerMove {
     [SerializeField] float groundJumpPower = 0.2f;
     [SerializeField] float jumpPower = 50.0f;
     public bool JumpFlag { get; set; }
-    public bool JumpSet { get; set; }
     public bool Jumping { get; set; }
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         //GetComponent<PlayerStatus>().status = PlayerStatus.Status.ALPHA;
         JumpFlag = false;
-        JumpSet = false;
         Jumping = false;
     }
 
     void OnEnable()
     {
-        JumpSet = false;
     }
 
     void FixedUpdate()
@@ -39,8 +36,6 @@ public class PlayerAlpha : IPlayerMove {
     public void PlayerDirectionJump()
     {
         float val = 1.0f;
-        if (JumpSet) val *= -1.0f;
-
         if (Input.GetMouseButton(0))
         {
             if (this.transform.position.x < InputManager.inputManager.tapPosition.x)
@@ -53,26 +48,21 @@ public class PlayerAlpha : IPlayerMove {
             }
         }
     }
-    
+
+    [SerializeField] ContactFilter2D filter2D;
     protected override void Move()
     {
         rigidbody.gravityScale = 1.0f;
-        if (InputManager.inputManager.PlayerDrag && JumpFlag)
+        if (InputManager.inputManager.TapFlag && (rigidbody.IsTouching(filter2D)))
         {
-            rigidbody.gravityScale = 0.0f;
-            rigidbody.velocity *= 0.92f;
-            JumpSet = true;
-            Debug.Log("jump");
-        }else if (!InputManager.inputManager.PlayerDrag && JumpSet)
-        {
-            JumpSet = false;
             Jumping = true;
-            Vector2 jumpDir = (new Vector2(transform.position.x, transform.position.y) - InputManager.inputManager.tapPosition) * jumpPower;
+            Vector2 jumpDir = (InputManager.inputManager.tapPosition - new Vector2(transform.position.x, transform.position.y)) * jumpPower;
             if (OnGroundFlag)
             {
                 jumpDir *= groundJumpPower;
             }
             rigidbody.AddForce(jumpDir);
+            Debug.Log("jump");
         }
         else
         {

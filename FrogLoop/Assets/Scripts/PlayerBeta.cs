@@ -26,8 +26,7 @@ public class PlayerBeta : IPlayerMove {
     {
 
         PlayerDirection();
-            Move();
-        
+        Move();
         //ここでむーぶよびだす
     }
 

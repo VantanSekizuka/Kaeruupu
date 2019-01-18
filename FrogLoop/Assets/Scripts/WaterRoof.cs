@@ -9,7 +9,7 @@ public class WaterRoof : MonoBehaviour {
         {
             if (collider.gameObject.GetComponent<PlayerStatus>().status == PlayerStatus.Status.ALPHA)
             {
-                collider.gameObject.GetComponent<PlayerAlpha>().JumpFlag = true;
+                collider.gameObject.GetComponent<PlayerAlpha>().Jumping = false;
             }
         }
     }

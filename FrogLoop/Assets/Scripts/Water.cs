@@ -11,10 +11,12 @@ public class Water : MonoBehaviour {
         if (other.tag == "Player")
         {
             IPlayerMove.InWaterFlag = true;
-            //if (other.gameObject.GetComponent<PlayerStatus>().status == PlayerStatus.Status.ALPHA)
-            //{
-                other.GetComponent<Rigidbody2D>().drag = 3.0f;
-            //}
+            other.GetComponent<Rigidbody2D>().drag = 3.0f;
+            if (other.gameObject.GetComponent<PlayerStatus>().status == PlayerStatus.Status.GAMMA)
+            {
+                Debug.Log("aaa");
+                other.GetComponent<Rigidbody2D>().gravityScale = -0.2f;
+            }
         }
     }
 
@@ -23,10 +25,12 @@ public class Water : MonoBehaviour {
         if (other.tag == "Player")
         {
             IPlayerMove.InWaterFlag = false;
-            //if (other.gameObject.GetComponent<PlayerStatus>().status == PlayerStatus.Status.ALPHA)
-            //{
-                other.GetComponent<Rigidbody2D>().drag = 0.0f;
-            //}
+            other.GetComponent<Rigidbody2D>().drag = 0.0f;
+            if (other.gameObject.GetComponent<PlayerStatus>().status == PlayerStatus.Status.GAMMA)
+            {
+                Debug.Log("bbb");
+                other.GetComponent<Rigidbody2D>().gravityScale = 1.0f;
+            }
         }
     }
 }
