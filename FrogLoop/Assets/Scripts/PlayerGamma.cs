@@ -19,6 +19,8 @@ public class PlayerGamma : IPlayerMove
     private Vector2 _playerPosition;
     private Vector2 _mousePosition;
     private Vector2 _dragPosition;
+    private float _max = 5.0f;//ジャンプの引っ張りの最大値
+    private float _min = 1.0f;//ジャンプの引っ張りの最小値
 
     public bool JumpingFlag { get; set; }//ジャンプするタイミングを判断する
     void Start()
@@ -53,12 +55,7 @@ public class PlayerGamma : IPlayerMove
 
                 if (InputManager.inputManager.state == InputManager.TouchState.RELEASE)
                 {
-                    if (_playerPosition.y - _dragPosition.y > 1)
-                    {
-                        GetComponent<Animator>().SetTrigger("Jump");
-                        Jump();
-                        JumpingFlag = true;
-                    }
+                    Jump();
                 }
 
             }
@@ -118,14 +115,26 @@ public class PlayerGamma : IPlayerMove
     }
     void Jump()
     {
-        rigidbody.AddForce((_playerPosition - _dragPosition) * _jumpingPower);
-        Debug.Log("JUMP");
+        if (_playerPosition.y - _dragPosition.y > _min)
+        {
+            if (_playerPosition.y - _dragPosition.y < _max)
+            {
+                rigidbody.AddForce((_playerPosition - _dragPosition) * _jumpingPower);
+            }
+            else
+            {
+                rigidbody.AddForce(new Vector2(_playerPosition.x-_dragPosition.x,_max)* _jumpingPower);
+            }
+                JumpingFlag = true;
+                GetComponent<Animator>().SetTrigger("Jump");
+                Debug.Log("JUMP");
+        }
     }
     void GPlayerDirection()
     {
         if (Input.GetMouseButton(0))
         {
-            if (_playerPosition.x - _mousePosition.x < 1)
+            if (_playerPosition.x - _mousePosition.x < _min)
             {
                 transform.localScale = new Vector3(1, 1, 1);
             }
@@ -136,7 +145,7 @@ public class PlayerGamma : IPlayerMove
         }
         else if (InputManager.inputManager.PlayerDrag == true)
         {
-            if (_playerPosition.y - _dragPosition.y > 1)
+            if (_playerPosition.y - _dragPosition.y > _min)
             {
                 if (_playerPosition.x + _oneSide > _dragPosition.x)
                 {
