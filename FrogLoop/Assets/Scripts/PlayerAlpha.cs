@@ -56,7 +56,7 @@ public class PlayerAlpha : IPlayerMove {
         if (InputManager.inputManager.TapFlag && (rigidbody.IsTouching(filter2D)))
         {
             Jumping = true;
-            Vector2 jumpDir = (InputManager.inputManager.tapPosition - new Vector2(transform.position.x, transform.position.y)) * jumpPower;
+            Vector2 jumpDir = ((InputManager.inputManager.tapPosition - new Vector2(transform.position.x, transform.position.y))).normalized * jumpPower;
             if (OnGroundFlag)
             {
                 jumpDir *= groundJumpPower;
