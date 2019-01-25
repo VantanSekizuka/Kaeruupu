@@ -24,10 +24,7 @@ public class Fly : IEnemy {
         var player = GameObject.Find("Player");
         if (player.GetComponent<PlayerStatus>().status == PlayerStatus.Status.GAMMA)
         {
-            Shita_GameObject = Instantiate(Shita_Plefab);
-            Shita_GameObject.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            GameObject.Find("Player").GetComponent<PlayerGamma>().Eat();
-
+            shitaNobashi(player.GetComponent<IPlayerMove>());
             Destroy(this.gameObject);
             Debug.Log("yes");
         }
