@@ -11,9 +11,9 @@ public class Fly : IEnemy {
     private float Speed;
     private float Fly_height;
     [SerializeField]
-    private GameObject Fly_Plefab;
+    private GameObject Shita_Plefab;
     
-   public GameObject Fly_GameObject { get; set; }
+   public GameObject Shita_GameObject { get; set; }
     private float Fly_x;
     private bool Fly_count=false;
     [SerializeField]
@@ -24,8 +24,8 @@ public class Fly : IEnemy {
         var player = GameObject.Find("Player");
         if (player.GetComponent<PlayerStatus>().status == PlayerStatus.Status.GAMMA)
         {
-            //Fly_GameObject = Instantiate(Fly_Plefab);
-            //Fly_GameObject.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            Shita_GameObject = Instantiate(Shita_Plefab);
+            Shita_GameObject.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             GameObject.Find("Player").GetComponent<PlayerGamma>().Eat();
 
             Destroy(this.gameObject);
@@ -66,7 +66,7 @@ public class Fly : IEnemy {
         if (other.gameObject.tag == "Player")
         {
             HitingBool = true;
-            //Debug.Log(HitingBool);
+            Debug.Log(HitingBool);
         }
     }
 }
