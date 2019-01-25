@@ -12,6 +12,7 @@ public class OtamaFriends : MonoBehaviour {
     {
         player = GameObject.Find("Player");
         rigidbody = GetComponent<Rigidbody2D>();
+        GetComponent<Animator>().SetBool("IfMove", true);
     }
     void FixedUpdate()
     {
