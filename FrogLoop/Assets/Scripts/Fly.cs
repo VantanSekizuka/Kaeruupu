@@ -58,7 +58,7 @@ public class Fly : IEnemy {
         
         //Debug.Log(Fly_count);
         transform.position = new Vector3(Fly_x+Fly_width*Mathf.Sin(Time.time), Fly_y + Fly_haba * Mathf.Sin(Time.time * Speed), transform.position.z);
-      
+         
     }
 
     protected override void OnCollisionEnter2D(Collision2D other)
