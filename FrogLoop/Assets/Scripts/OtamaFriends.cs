@@ -19,7 +19,7 @@ public class OtamaFriends : MonoBehaviour {
         if (dir.sqrMagnitude > minLength * minLength)
         {
             if (dir.sqrMagnitude < maxLength * maxLength)
-            rigidbody.AddForce(dir);
+            rigidbody.AddForce(2 * dir);
         }
         if (rigidbody.velocity.sqrMagnitude > maxSpeed * maxSpeed)
         {
