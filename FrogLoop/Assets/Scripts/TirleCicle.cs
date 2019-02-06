@@ -8,6 +8,8 @@ public class TirleCicle : MonoBehaviour {
     [SerializeField]
     private Image Cicle;
 
+  
+
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +23,8 @@ public class TirleCicle : MonoBehaviour {
         Vector3 ciclemove = new Vector3(0, 0, 0);
         ciclemove.z += 0.5f;
 
-        Cicle.transform.Rotate(ciclemove); 
+        Cicle.transform.Rotate(ciclemove);
+      
 
     }
 }
