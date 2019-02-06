@@ -19,8 +19,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4638091026670560}
-  - component: {fileID: 61628330957709878}
   - component: {fileID: 212171094594800928}
+  - component: {fileID: 61628330957709878}
   - component: {fileID: 114128976638377460}
   m_Layer: 0
   m_Name: Water
@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1767616859581280}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5847232, y: -8.284467, z: 0.0625}
+  m_LocalPosition: {x: 24.876747, y: -14.373031, z: 0.0625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4992511308729092}

@@ -24,9 +24,8 @@ public class Fly : IEnemy {
         var player = GameObject.Find("Player");
         if (player.GetComponent<PlayerStatus>().status == PlayerStatus.Status.GAMMA)
         {
-            shitaNobashi(player.GetComponent<IPlayerMove>());
-            Destroy(this.gameObject);
-            Debug.Log("yes");
+            var time = shitaNobashi();
+            Destroy(this.gameObject, time);
         }
     }
     void Start()

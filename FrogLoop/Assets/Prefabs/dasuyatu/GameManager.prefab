@@ -63,4 +63,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff1d28b8c6621304fadbee5a466b5477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tapTime: 0.1
   state: 0
