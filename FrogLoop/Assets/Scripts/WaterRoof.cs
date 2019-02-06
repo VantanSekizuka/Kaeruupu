@@ -19,7 +19,6 @@ public class WaterRoof : MonoBehaviour {
         {
             if (collider.gameObject.GetComponent<PlayerStatus>().status == PlayerStatus.Status.ALPHA)
             {
-                collider.gameObject.GetComponent<PlayerAlpha>().JumpFlag = false;
                 collider.gameObject.GetComponent<PlayerAlpha>().Jumping = false;
             }
         }
@@ -48,7 +47,7 @@ public class WaterRoof : MonoBehaviour {
         if (collider.transform.position.y > transform.position.y)
         {
             var mag = (collider.transform.position.y - transform.position.y);
-            collider.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.down * mag * mag * 150);
+            collider.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.down * mag * mag * 100);
         }
     }
 }

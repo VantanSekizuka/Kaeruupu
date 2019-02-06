@@ -13,13 +13,10 @@ public class PlayerAlpha : IPlayerMove {
     [SerializeField] float waterGravity = 0.2f;
     [SerializeField] float groundJumpPower = 0.2f;
     [SerializeField] float jumpPower = 50.0f;
-    public bool JumpFlag { get; set; }
     public bool Jumping { get; set; }
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        //GetComponent<PlayerStatus>().status = PlayerStatus.Status.ALPHA;
-        JumpFlag = false;
         Jumping = false;
     }
 
@@ -60,9 +57,9 @@ public class PlayerAlpha : IPlayerMove {
             if (OnGroundFlag)
             {
                 jumpDir *= groundJumpPower;
+                Debug.Log("jump");
             }
             rigidbody.AddForce(jumpDir);
-            Debug.Log("jump");
         }
         else
         {
@@ -73,11 +70,6 @@ public class PlayerAlpha : IPlayerMove {
             else if(OnGroundFlag)
             {
                 GetComponent<Animator>().SetBool("IfMove", false);
-                JumpFlag = true;
-            }
-            else
-            {
-                JumpFlag = false;
             }
         }
     }
