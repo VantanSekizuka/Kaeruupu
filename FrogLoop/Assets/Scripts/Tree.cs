@@ -14,12 +14,21 @@ public class Tree : MonoBehaviour {
 
     IEnumerator Enter()
     {
-        yield return StartCoroutine(GameManager.manager.TreeInOut(GameManager.SceneState.TREE));
-        Debug.Log("abc");
+        Time.timeScale = 0.0f;
         var player = GameObject.Find("Player");
+        //yield return StartCoroutine(GameManager.manager.TreeInOut(GameManager.SceneState.TREE, transform.parent.position));
+        yield return StartCoroutine(Effect.effect.transform.Find("Fade").GetComponent<Fade>().FadeIn(1.0f));
+
         var inner = transform.parent.Find("Inner");
         player.transform.position = inner.Find("Entrance").transform.position;
         inner.gameObject.SetActive(true);
+
+        var camera = Camera.allCameras[0].GetComponent<CameraController>();
+        camera.Treeflag = true;
+        yield return StartCoroutine(camera.CameraRotate(Vector3.forward * 90.0f, player.transform.position ,transform.parent.position));
+
+        Time.timeScale = 1.0f;
+
         yield return StartCoroutine(Effect.effect.transform.Find("Fade").GetComponent<Fade>().FadeOut(1.0f));
         gameObject.SetActive(false);
         yield break;
@@ -27,11 +36,21 @@ public class Tree : MonoBehaviour {
 
     IEnumerator Exit()
     {
-        yield return StartCoroutine(GameManager.manager.TreeInOut(GameManager.SceneState.FIELD));
+        Time.timeScale = 0.0f;
         var player = GameObject.Find("Player");
+        //yield return StartCoroutine(GameManager.manager.TreeInOut(GameManager.SceneState.TREE, transform.parent.position));
+        yield return StartCoroutine(Effect.effect.transform.Find("Fade").GetComponent<Fade>().FadeIn(1.0f));
+
         var outer = transform.parent.Find("Outer");
-        player.transform.position = outer.Find("Entrance").transform.position;
         outer.gameObject.SetActive(true);
+
+        var camera = Camera.allCameras[0].GetComponent<CameraController>();
+        yield return StartCoroutine(camera.CameraRotate(Vector3.forward * -90.0f, camera.transform.position, player.transform.position));
+        player.transform.position = outer.Find("Entrance").transform.position;
+        camera.Treeflag = false;
+
+        Time.timeScale = 1.0f;
+
         yield return StartCoroutine(Effect.effect.transform.Find("Fade").GetComponent<Fade>().FadeOut(1.0f));
         gameObject.SetActive(false);
         yield break;
