@@ -7,28 +7,33 @@ public class Tree : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            if (transform.name.Contains("Outer")) Enter();
-            else Exit();
+            if (transform.name.Contains("Outer")) StartCoroutine(Enter());
+            else StartCoroutine(Exit());
         }
     }
 
-    void Enter()
+    IEnumerator Enter()
     {
+        yield return StartCoroutine(GameManager.manager.TreeInOut(GameManager.SceneState.TREE));
+        Debug.Log("abc");
         var player = GameObject.Find("Player");
-        Camera.allCameras[0].transform.Rotate(Vector3.forward * 90.0f);
         var inner = transform.parent.Find("Inner");
         player.transform.position = inner.Find("Entrance").transform.position;
         inner.gameObject.SetActive(true);
+        yield return StartCoroutine(Effect.effect.transform.Find("Fade").GetComponent<Fade>().FadeOut(1.0f));
         gameObject.SetActive(false);
+        yield break;
     }
 
-    void Exit()
+    IEnumerator Exit()
     {
+        yield return StartCoroutine(GameManager.manager.TreeInOut(GameManager.SceneState.FIELD));
         var player = GameObject.Find("Player");
-        Camera.allCameras[0].transform.Rotate(Vector3.forward * -90.0f);
         var outer = transform.parent.Find("Outer");
         player.transform.position = outer.Find("Entrance").transform.position;
         outer.gameObject.SetActive(true);
+        yield return StartCoroutine(Effect.effect.transform.Find("Fade").GetComponent<Fade>().FadeOut(1.0f));
         gameObject.SetActive(false);
+        yield break;
     }
 }

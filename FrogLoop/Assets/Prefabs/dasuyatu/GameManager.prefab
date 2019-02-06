@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848ed6845ed49de44aaa0206f9f341aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  frameCount: 90
 --- !u!114 &114890540297239482
 MonoBehaviour:
   m_ObjectHideFlags: 1
