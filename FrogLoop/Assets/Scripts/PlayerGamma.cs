@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerGamma : IPlayerMove
 {
     Rigidbody2D rigidbody;
+   
 
     [SerializeField]
     private float _maxSpeed;//カエルのスピード
@@ -13,6 +14,9 @@ public class PlayerGamma : IPlayerMove
     private float _speed;//カエルのスピード
     [SerializeField]
     private float _jumpingPower;//ジャンプ力
+    [SerializeField]
+    private GameObject _arrowSprite;//矢印の画像
+
 
     private float _oneSide = 0.15f;//スプライトの一辺の長さ
 
@@ -28,6 +32,7 @@ public class PlayerGamma : IPlayerMove
         //Debug.Log("Start");
         rigidbody = GetComponent<Rigidbody2D>();
         JumpingFlag = false;
+        _arrowSprite.SetActive(false);
 
     }
 
@@ -35,7 +40,7 @@ public class PlayerGamma : IPlayerMove
     {
         //Debug.Log("Enable");
         JumpingFlag = false;
-
+        _arrowSprite.SetActive(false);
     }
 
     void FixedUpdate()//ここメイン
@@ -49,13 +54,19 @@ public class PlayerGamma : IPlayerMove
         {
             if (InputManager.inputManager.PlayerDrag == true)
             {
-
+                
                 _dragPosition = InputManager.inputManager.tapPosition;
                 _playerPosition = this.transform.position;
+
+                _arrowSprite.transform.position = _playerPosition;
+                _arrowSprite.transform.localScale = new Vector2((_playerPosition.y - _dragPosition.y), 0.5f);
+                _arrowSprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, GetAngle(_playerPosition,_dragPosition));
+                _arrowSprite.SetActive(true);
 
                 if (InputManager.inputManager.state == InputManager.TouchState.RELEASE)
                 {
                     Jump();
+                    _arrowSprite.SetActive(false);
                 }
 
             }
@@ -158,6 +169,14 @@ public class PlayerGamma : IPlayerMove
             }
         }
     }
+    private float GetAngle(Vector2 pPos,Vector2 dPos)
+    {
+        float dx = pPos.x - dPos.x;
+        float dy = pPos.y - dPos.y;
+        float rad = Mathf.Atan2(dy, dx);
+        return rad * Mathf.Rad2Deg;
+    }
+
     public void Eat()
     {
         GetComponent<Animator>().SetTrigger("Eat");
