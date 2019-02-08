@@ -63,6 +63,15 @@ public class PlayerGamma : IPlayerMove
                 _arrowSprite.transform.rotation = Quaternion.Euler(0.0f, 0.0f, GetAngle(_playerPosition,_dragPosition));
                 _arrowSprite.SetActive(true);
 
+                if (_playerPosition.x -_dragPosition.x >= 0)
+                {
+                    this.transform.localScale = new Vector2(1,1);
+                }
+                else
+                {
+                    this.transform.localScale = new Vector2(-1, 1);
+                }
+
                 if (InputManager.inputManager.state == InputManager.TouchState.RELEASE)
                 {
                     Jump();
