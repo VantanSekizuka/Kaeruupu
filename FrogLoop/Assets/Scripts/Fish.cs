@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fish :  IEnemy {
+public class Fish :  IEnemy{
 
     public float speed = 0.001f;
     Vector3 fish = Vector3.zero;
