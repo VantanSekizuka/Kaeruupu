@@ -9,11 +9,7 @@ public class Fly : IEnemy {
     private float Fly_haba;
     [SerializeField]
     private float Speed;
-    private float Fly_height;
-    [SerializeField]
-    private GameObject Shita_Plefab;
-    
-   public GameObject Shita_GameObject { get; set; }
+  
     private float Fly_x;
     private bool Fly_count=false;
     [SerializeField]
