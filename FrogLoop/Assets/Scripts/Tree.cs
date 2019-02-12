@@ -16,8 +16,9 @@ public class Tree : MonoBehaviour {
     {
         Time.timeScale = 0.0f;
         var player = GameObject.Find("Player");
-        //yield return StartCoroutine(GameManager.manager.TreeInOut(GameManager.SceneState.TREE, transform.parent.position));
         yield return StartCoroutine(Effect.effect.transform.Find("Fade").GetComponent<Fade>().FadeIn(1.0f));
+
+        GameObject.Find("BG").transform.position = new Vector3(0,0, -5);
 
         var inner = transform.parent.Find("Inner");
         player.transform.position = inner.Find("Entrance").transform.position;
@@ -38,8 +39,9 @@ public class Tree : MonoBehaviour {
     {
         Time.timeScale = 0.0f;
         var player = GameObject.Find("Player");
-        //yield return StartCoroutine(GameManager.manager.TreeInOut(GameManager.SceneState.TREE, transform.parent.position));
         yield return StartCoroutine(Effect.effect.transform.Find("Fade").GetComponent<Fade>().FadeIn(1.0f));
+
+        GameObject.Find("BG").transform.position = new Vector3(0, 0, -1);
 
         var outer = transform.parent.Find("Outer");
         outer.gameObject.SetActive(true);
