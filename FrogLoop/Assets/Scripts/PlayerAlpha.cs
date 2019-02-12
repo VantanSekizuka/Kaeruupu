@@ -4,7 +4,7 @@ using UnityEngine;
 
 //オタマジャクシ
 public class PlayerAlpha : IPlayerMove {
-
+    public static int FriendCount;
     Rigidbody2D rigidbody;
     [SerializeField] float speadScaleWater;
     [SerializeField] float speadScaleGround;
@@ -16,12 +16,14 @@ public class PlayerAlpha : IPlayerMove {
     public bool Jumping { get; set; }
     void Start()
     {
+        FriendCount = 0;
         rigidbody = GetComponent<Rigidbody2D>();
         Jumping = false;
     }
 
     void OnEnable()
     {
+        FriendCount = 0;
     }
 
     void FixedUpdate()
