@@ -11,6 +11,10 @@ public class WaterRoof : MonoBehaviour {
             {
                 collider.gameObject.GetComponent<PlayerAlpha>().Jumping = false;
             }
+            else if (collider.gameObject.GetComponent<PlayerStatus>().status == PlayerStatus.Status.GAMMA)
+            {
+                collider.gameObject.GetComponent<PlayerGamma>().JumpingFlag = false;
+            }
         }
     }
     void OnTriggerExit2D(Collider2D collider)
@@ -33,6 +37,10 @@ public class WaterRoof : MonoBehaviour {
                 {
                     return;
                 }
+            }
+            else
+            {
+                return;
             }
             PushBack(collider);
         }

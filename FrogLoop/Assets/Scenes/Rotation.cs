@@ -4,31 +4,57 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Rotation : MonoBehaviour {
-    //回転の中心にあるキューブ
-    public GameObject manaka;
-    //回転中の処理関係
-    public GameObject parent;
-    Vector3 move = Vector3.zero;
-    public float l = 0;
-    //ボタンの処理
-    private bool a=false;
-    private bool b = false;
+    [SerializeField] GameObject center;
+    [SerializeField] Sprite[] sprites;
+    int index;
+    Image name;
+    Button button;
+    int move;
+
+    void Start()
+    {
+        index = 0;
+        move = 0;
+        name = transform.Find("Number").GetComponent<Image>();
+        button = transform.Find("Select").GetComponent<Button>();
+    }
 
     //ボタン
     public void OnL()
     {
-       move.z =90f;
-       manaka.transform.Rotate(move);
+        move += -45;
+        index = (index + 3) % 4;
+        name.sprite = sprites[index];
+        button.interactable = false;
     }
     public void OnR()
     {
-        
+        move += 45;
+        index = (index + 1) % 4;
+        name.sprite = sprites[index];
+        button.interactable = false;
+    }
+
+    public void Select()
+    {
+        Debug.Log("Load Stage" + (index+1));
     }
    
 	void Update ()
     {
-
-        transform.position = parent.transform.position;
+        if (move > 0)
+        {
+            center.transform.Rotate(Vector3.up*2);
+            move--;
+        }else if(move < 0)
+        {
+            center.transform.Rotate(Vector3.down*2);
+            move++;
+        }
+        else
+        {
+            button.interactable = true;
+        }
     }
    
    
