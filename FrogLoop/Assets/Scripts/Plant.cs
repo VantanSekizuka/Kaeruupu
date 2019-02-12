@@ -11,7 +11,7 @@ public class Plant : MonoBehaviour {
 	}
 	
 	void Update () {
-        Debug.Log(PlayerAlpha.FriendCount);
+
 	}
 
     void OnTriggerStay2D(Collider2D collider)
