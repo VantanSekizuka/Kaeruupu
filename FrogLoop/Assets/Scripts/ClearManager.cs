@@ -13,21 +13,42 @@ public class ClearManager : MonoBehaviour {
     private Image image;
 
     [SerializeField]
+    private Button NextButton;
+
+
+    [SerializeField]
     private Text text;
 
     private string StageText;
     private string ClearText;
+    
 
 	// Use this for initialization
 	void Start () {
-        StageText = "次はステージ(o･∇･o)";
+        StageText = "次はステージ"+ (1+GameManager.stageNumber).ToString();
         ClearText = "ステージクリア(o･∇･o)";
-        text.text = StageText;
+        image.gameObject.SetActive(false);
+        NextButton.gameObject.SetActive(true);
+        if (GameManager.stageNumber < 4)
+        {
+            text.text = StageText;
+            image.sprite = sprites[GameManager.stageNumber];
+            image.gameObject.SetActive(true); 
+
+        }
+        else
+        {
+            text.text = ClearText;
+            NextButton.gameObject.SetActive(false);
+        }
+
+
+
 	}
 	
     public void OnNextClick()
     {
-        
+        SceneManager.LoadScene("Stage"+(1+GameManager.stageNumber).ToString());
     }
 
     public void OnSelectClick()
