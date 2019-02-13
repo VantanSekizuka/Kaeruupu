@@ -12,13 +12,4 @@ public class Iwa : MonoBehaviour {
             transform.Translate(-1.0f, 0, 0);
         }
     }
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
