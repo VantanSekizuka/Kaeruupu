@@ -14,6 +14,6 @@ public class Seesaw : MonoBehaviour {
     {
         var prevFlag = changedFlag;
         changedFlag = PlayerAlpha.FriendCount >= clearCount;
-        if (prevFlag != changedFlag) _rb.mass = changedFlag ? 1 : 100;
+        if (prevFlag != changedFlag) _rb.mass = changedFlag ? 1 : 10000;
     }
 }
