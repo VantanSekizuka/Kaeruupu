@@ -9,7 +9,7 @@ public class Iwa : MonoBehaviour {
         if (player.GetComponent<PlayerStatus>().status == PlayerStatus.Status.GAMMA)
         {
             GameObject.Find("Player").GetComponent<PlayerGamma>().Eat();
-            transform.Translate(1.0f, 0, 0);
+            transform.Translate(-1.0f, 0, 0);
         }
     }
 	// Use this for initialization
