@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Rotation : MonoBehaviour {
     [SerializeField] GameObject center;
@@ -10,6 +11,7 @@ public class Rotation : MonoBehaviour {
     Image name;
     Button button;
     int move;
+    int size;
 
     void Start()
     {
@@ -17,27 +19,40 @@ public class Rotation : MonoBehaviour {
         move = 0;
         name = transform.Find("Number").GetComponent<Image>();
         button = transform.Find("Select").GetComponent<Button>();
+        size = center.transform.childCount;
+        for (int i = 0; i < size; i++)
+        {
+            center.transform.GetChild(i).localPosition = new Vector3(Mathf.Sin(i * 72), 0, -Mathf.Cos(i * 72)) * 10;
+        }
+        
     }
 
     //ボタン
     public void OnL()
     {
-        move += -45;
-        index = (index + 3) % 4;
+        move += -360 / size / 2;
+        index = (index + size - 1) % size;
         name.sprite = sprites[index];
         button.interactable = false;
     }
     public void OnR()
     {
-        move += 45;
-        index = (index + 1) % 4;
+        move += 360 / size / 2;
+        index = (index + 1) % size;
         name.sprite = sprites[index];
         button.interactable = false;
     }
 
     public void Select()
     {
-        Debug.Log("Load Stage" + (index+1));
+        if (index > 0)
+        {
+            Debug.Log("Load Stage" + index);
+        }
+        else
+        {
+            SceneManager.LoadScene("Tutorial");
+        }
     }
    
 	void Update ()
