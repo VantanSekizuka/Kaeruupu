@@ -22,7 +22,9 @@ public class Rotation : MonoBehaviour {
         size = center.transform.childCount;
         for (int i = 0; i < size; i++)
         {
-            center.transform.GetChild(i).localPosition = new Vector3(Mathf.Sin(i * 72), 0, -Mathf.Cos(i * 72)) * 10;
+            var f = ((i * 72 + 270) * Mathf.Deg2Rad);
+            center.transform.GetChild(i).localPosition = new Vector3(Mathf.Cos(f), 0, Mathf.Sin(f)) * 10;
+            Debug.Log(Mathf.Sin((i * 72 + 270) * Mathf.Deg2Rad));
         }
         
     }
