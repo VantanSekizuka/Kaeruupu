@@ -47,6 +47,7 @@ public class Rotation : MonoBehaviour {
 
     public void Select()
     {
+        GameManager.stageNumber = index;
         if (index > 0)
         {
             Debug.Log("Load Stage" + index);
