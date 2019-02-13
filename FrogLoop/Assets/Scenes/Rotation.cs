@@ -26,7 +26,7 @@ public class Rotation : MonoBehaviour {
             center.transform.GetChild(i).localPosition = new Vector3(Mathf.Cos(f), 0, Mathf.Sin(f)) * 10;
             Debug.Log(Mathf.Sin((i * 72 + 270) * Mathf.Deg2Rad));
         }
-        
+        name.sprite = sprites[0];
     }
 
     //ボタン
@@ -50,7 +50,7 @@ public class Rotation : MonoBehaviour {
         GameManager.stageNumber = index;
         if (index > 0)
         {
-            Debug.Log("Load Stage" + index);
+            SceneManager.LoadScene("Stage" + index.ToString());
         }
         else
         {
