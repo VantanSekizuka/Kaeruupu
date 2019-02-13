@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour {
 	}
     public void ChangeScene(string _afterScene)
     {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene(_afterScene);
     }
 }
