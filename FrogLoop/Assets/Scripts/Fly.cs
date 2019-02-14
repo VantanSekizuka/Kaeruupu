@@ -60,7 +60,7 @@ public class Fly : IEnemy {
         {
             HitingBool = true;
             Debug.Log(HitingBool);
-            SceneManager.LoadScene("GAMEOVER");
+            StartCoroutine(GameManager.manager.GameOver());
         }
     }
 }

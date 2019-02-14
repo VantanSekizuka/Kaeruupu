@@ -27,4 +27,11 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = 1.0f;
         SceneManager.LoadScene(_afterScene);
     }
+
+    public IEnumerator GameOver()
+    {
+        yield return StartCoroutine(Effect.effect.transform.Find("Fade").GetComponent<Fade>().FadeIn(1.0f));
+        ChangeScene("GAMEOVER");
+        yield break;
+    }
 }
