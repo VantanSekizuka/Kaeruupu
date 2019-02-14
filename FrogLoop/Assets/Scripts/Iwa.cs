@@ -8,6 +8,11 @@ public class Iwa : MonoBehaviour {
         var player = GameObject.Find("Player");
         if (player.GetComponent<PlayerStatus>().status == PlayerStatus.Status.GAMMA)
         {
+            GameObject prefab = (GameObject)Resources.Load("Prefabs/Shita");
+            var shita = Instantiate(prefab);
+            shita.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            shita.GetComponent<Shita>().Player = player.gameObject;
+            shita.GetComponent<Shita>().Enemy = this.gameObject;
             GameObject.Find("Player").GetComponent<PlayerGamma>().Eat();
             transform.Translate(-1.0f, 0, 0);
         }
