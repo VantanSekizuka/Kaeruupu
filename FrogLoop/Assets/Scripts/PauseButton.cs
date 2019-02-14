@@ -6,17 +6,19 @@ public class PauseButton : MonoBehaviour {
 
     [SerializeField]
     private GameObject _menuScreen;
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public AudioClip clip;
+    private AudioSource source;
+    void Start () {
+        source = gameObject.GetComponent<AudioSource>();
+    }
 	
-	// Update is called once per frame
+	
 	void Update () {
 		
 	}
     public void PauseButtonPush()
     {
+        source.PlayOneShot(clip);
         Time.timeScale = 0;
         _menuScreen.SetActive(true);
     }
