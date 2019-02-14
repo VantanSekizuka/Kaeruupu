@@ -1532,6 +1532,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ced4bcdb1a153bf4b8995cde0324fcee, type: 3}
   - {fileID: 21300000, guid: fc923c03c3131804cb608e6cbcf822a4, type: 3}
   clip: {fileID: 8300000, guid: e988a768d6653fc488b0825b66a0e761, type: 3}
+  clip2: {fileID: 8300000, guid: 96632eb9fce2d52469a27e2ca43b33e1, type: 3}
 --- !u!82 &1929960125
 AudioSource:
   m_ObjectHideFlags: 0

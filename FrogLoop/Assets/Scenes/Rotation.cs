@@ -12,12 +12,17 @@ public class Rotation : MonoBehaviour {
     Button button;
     public AudioClip clip;
     private AudioSource source;
+    public AudioClip clip2;
+    private AudioSource source2;
+ 
     int move;
     int size;
 
     void Start()
     {
         source = gameObject.GetComponent<AudioSource>();
+        source2 = gameObject.GetComponent<AudioSource>();
+       
         index = 0;
         move = 0;
         name = transform.Find("Number").GetComponent<Image>();
@@ -35,6 +40,7 @@ public class Rotation : MonoBehaviour {
     //ボタン
     public void OnL()
     {
+        source2.PlayOneShot(clip2);
         move += -360 / size / 2;
         index = (index + size - 1) % size;
         name.sprite = sprites[index];
@@ -42,6 +48,7 @@ public class Rotation : MonoBehaviour {
     }
     public void OnR()
     {
+        source2.PlayOneShot(clip2);
         move += 360 / size / 2;
         index = (index + 1) % size;
         name.sprite = sprites[index];
