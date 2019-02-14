@@ -36,10 +36,7 @@ public class GAMEOVER : MonoBehaviour {
         {
             image.sprite = sprites[GameManager.stageNumber - 1];
         }
-        else
-        {
-            image.sprite = sprites[0];
-        }
+
     }
 
             // Update is called once per frame
