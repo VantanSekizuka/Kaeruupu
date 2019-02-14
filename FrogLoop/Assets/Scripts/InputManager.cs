@@ -50,6 +50,5 @@ public class InputManager : MonoBehaviour {
                 TapFlag = true;
             }
         }
-        //Debug.Log(state);
     }
 }

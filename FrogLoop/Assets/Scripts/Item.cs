@@ -13,7 +13,6 @@ public class Item : MonoBehaviour {
         if (other.gameObject.tag == "Player")
         {
             other.GetComponent<PlayerStatus>().Changed(changeStatus);
-            Debug.Log("菊池怖い");
             Destroy(transform.gameObject);
         }
     }
