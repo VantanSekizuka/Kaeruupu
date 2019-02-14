@@ -15,6 +15,11 @@ public class TitleChange : MonoBehaviour {
         SceneManager.LoadScene("Select");
     }
 
+    public void OnStaffClick()
+    {
+        SceneManager.LoadScene("Staff");
+    }
+
 	// Update is called once per frame
 	void Update () {
 		
