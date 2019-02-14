@@ -14,7 +14,7 @@ public class Iwa : MonoBehaviour {
             shita.GetComponent<Shita>().Player = player.gameObject;
             shita.GetComponent<Shita>().Enemy = this.gameObject;
             GameObject.Find("Player").GetComponent<PlayerGamma>().Eat();
-            transform.Translate(-1.0f, 0, 0);
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(150.0f, 0));
         }
     }
 }
