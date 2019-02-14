@@ -48,7 +48,8 @@ public class ClearManager : MonoBehaviour {
 	
     public void OnNextClick()
     {
-        SceneManager.LoadScene("Stage"+(1+GameManager.stageNumber).ToString());
+        GameManager.stageNumber++;
+        SceneManager.LoadScene("Stage"+(GameManager.stageNumber).ToString());
     }
 
     public void OnSelectClick()

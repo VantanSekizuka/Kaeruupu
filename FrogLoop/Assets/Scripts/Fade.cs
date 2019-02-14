@@ -18,6 +18,7 @@ public class Fade : MonoBehaviour {
 
     public IEnumerator FadeIn(float time)
     {
+        image.color = new Color(0, 0, 0, 0);
         timer = 0.0f;
         while (timer < time) {
             timer += Time.fixedDeltaTime;
@@ -29,6 +30,7 @@ public class Fade : MonoBehaviour {
 
     public IEnumerator FadeOut(float time)
     {
+        image.color = new Color(0, 0, 0, 1);
         timer = 0.0f;
         while (timer < time)
         {
