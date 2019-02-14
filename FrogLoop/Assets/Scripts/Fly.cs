@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //ハエ
 public class Fly : IEnemy {
@@ -59,6 +60,7 @@ public class Fly : IEnemy {
         {
             HitingBool = true;
             Debug.Log(HitingBool);
+            SceneManager.LoadScene("GAMEOVER");
         }
     }
 }

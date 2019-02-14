@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //タガメ
 public class Tagame : IEnemy
@@ -60,6 +61,7 @@ public class Tagame : IEnemy
         {
             HitingBool = true;
             Debug.Log(HitingBool);
+            SceneManager.LoadScene("GAMEOVER");
         }
        
     }
