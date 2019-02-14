@@ -1942,11 +1942,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114662450193828442, guid: c44418a3c4aef924d8fbf3b5cc5a1663,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114578521583468128, guid: c44418a3c4aef924d8fbf3b5cc5a1663,
         type: 3}
       propertyPath: _arrowSprite
       value: 
       objectReference: {fileID: 503015829}
+    - target: {fileID: 114578521583468128, guid: c44418a3c4aef924d8fbf3b5cc5a1663,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95556961414062254, guid: c44418a3c4aef924d8fbf3b5cc5a1663,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1c53ae119ca3b40498cd429fe3f88181, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c44418a3c4aef924d8fbf3b5cc5a1663, type: 3}
 --- !u!1001 &1056692532

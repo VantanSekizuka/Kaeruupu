@@ -27,8 +27,13 @@ public class PlayerGamma : IPlayerMove
     private float _min = 1.0f;//ジャンプの引っ張りの最小値
 
     public bool JumpingFlag { get; set; }//ジャンプするタイミングを判断する
+
+    public AudioClip clip;
+    private AudioSource source;
+
     void Start()
     {
+        source = gameObject.GetComponent<AudioSource>();
         //Debug.Log("Start");
         rigidbody = GetComponent<Rigidbody2D>();
         JumpingFlag = false;
@@ -147,6 +152,7 @@ public class PlayerGamma : IPlayerMove
             }
                 JumpingFlag = true;
                 GetComponent<Animator>().SetTrigger("Jump");
+                source.PlayOneShot(clip);
                 Debug.Log("JUMP");
         }
     }
