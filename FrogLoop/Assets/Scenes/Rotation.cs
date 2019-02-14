@@ -10,11 +10,14 @@ public class Rotation : MonoBehaviour {
     int index;
     Image name;
     Button button;
+    public AudioClip clip;
+    private AudioSource source;
     int move;
     int size;
 
     void Start()
     {
+        source = gameObject.GetComponent<AudioSource>();
         index = 0;
         move = 0;
         name = transform.Find("Number").GetComponent<Image>();
@@ -47,6 +50,7 @@ public class Rotation : MonoBehaviour {
 
     public void Select()
     {
+        source.PlayOneShot(clip);
         GameManager.stageNumber = index;
         if (index > 0)
         {
