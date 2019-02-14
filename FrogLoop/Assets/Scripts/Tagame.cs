@@ -60,8 +60,7 @@ public class Tagame : IEnemy
         if (other.gameObject.tag == "Player")
         {
             HitingBool = true;
-            Debug.Log(HitingBool);
-            SceneManager.LoadScene("GAMEOVER");
+            StartCoroutine(GameManager.manager.GameOver());
         }
        
     }
