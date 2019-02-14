@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExitButton : MonoBehaviour
+public class BackToSelectButton : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
