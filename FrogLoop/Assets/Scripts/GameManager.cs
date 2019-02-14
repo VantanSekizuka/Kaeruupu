@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour {
 
     public IEnumerator GameOver()
     {
+        GetComponent<AudioSource>().Play();
         yield return StartCoroutine(Effect.effect.transform.Find("Fade").GetComponent<Fade>().FadeIn(1.0f));
         ChangeScene("GAMEOVER");
         yield break;
