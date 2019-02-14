@@ -37,7 +37,7 @@ public class StaffManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Fade.gameObject.SetActive(false);
     }
 
     public void OnTitleClick()
@@ -66,6 +66,7 @@ public class StaffManager : MonoBehaviour
         }
         else if(fade_a < 1)
         {
+            Fade.gameObject.SetActive(true);
             fade_a += 0.01f;
         }
         else
