@@ -5,9 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class GAMEOVER : MonoBehaviour {
 
-    public void title()
+    public void ReStart()
     {
-        SceneManager.LoadScene("Title");
+        if (GameManager.stageNumber > 0)
+        {
+            SceneManager.LoadScene("Stage" + GameManager.stageNumber.ToString());
+        }
+        else
+        {
+            SceneManager.LoadScene("Tutorial");
+        }
+    }
+
+    public void selsect()
+    {
+        SceneManager.LoadScene("Select");
     }
 	// Use this for initialization
 	void Start () {
